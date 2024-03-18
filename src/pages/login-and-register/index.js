@@ -1,4 +1,3 @@
-// import { Form } from "antd";
 import { memo, useState } from "react";
 import LeftSide from "./left-side";
 import Register from "./register";
@@ -17,7 +16,7 @@ const LoginAndRegister = () => {
     <div className={loginStyle.container}>
       <LeftSide loginStyle={loginStyle}/>
       <div className={loginStyle.right}>
-        <p className={loginStyle.title}>Personal Planner</p>
+        <p className={loginStyle.title}> {showLogin?"Login":"Register"}</p>
         {showLogin ? <Login setShowLogin={setShowLogin}/> : <Register setShowLogin={setShowLogin}/> }
       </div>
     </div>

@@ -13,6 +13,7 @@ const Register = (props) => {
   const onFinish = (values) => {
     users.push(values)
     localStorage.setItem("users", JSON.stringify(users))
+    form.resetFields()
     console.log(users);
   };
   
