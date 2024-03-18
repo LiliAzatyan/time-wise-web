@@ -1,17 +1,3 @@
-// import React from "react";
-// import { memo } from "react";
-// import React, { useState } from "react";
-
-// const SocialMedia = () => {
-
-//     return (<>
-//     SOCIAL MEDIA
-//     </>)
-// };
-
-// export default memo(SocialMedia);
-
-
 import React, { useState } from "react";
 import { memo } from "react";
 import './style.css'
@@ -19,7 +5,7 @@ import './style.css'
 const SocialMedia = () => {
     const [data, setData] = useState('');
     const cominSon = () => {
-        setData('СOMMING SON')
+        setData('COMMING SOON')
     }
     return (
     <>
