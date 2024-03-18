@@ -1,9 +1,6 @@
 import { Button, Form, Input } from "antd";
 import { memo } from "react";
-// import LeftSide from "./left-side";
-// import Register from "./register";
-// import useStyles from "./style";
-// import Login from "./login";
+
 import React from "react";
 let users = []
 const Register = (props) => {
