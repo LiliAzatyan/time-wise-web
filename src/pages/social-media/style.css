@@ -1,0 +1,36 @@
+.main {
+    width: 300px;
+    height: 500px;
+    background-color: #282c34;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.d1 {
+    width: 400px;
+    display: flex;
+   
+    
+}
+
+.inp {
+    width: 200px;
+    height: 30px;
+    outline: none;
+}
+
+.btn {
+    cursor: pointer;
+    font-size: 15px;
+    width: 100px;
+    height: 30px;
+}
+
+.btnName {
+    cursor: pointer;
+    width: 200px;
+    height: 30px;
+    font-size: 15px;
+}
