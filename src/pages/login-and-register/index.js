@@ -5,8 +5,6 @@ import useStyles from "./style";
 import Login from "./login";
 import React from "react";
 
-
-
 const LoginAndRegister = () => {
   const loginStyle = useStyles();
 
@@ -24,4 +22,3 @@ const LoginAndRegister = () => {
 };
 
 export default memo(LoginAndRegister);
-
