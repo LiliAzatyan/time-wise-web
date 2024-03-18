@@ -2,14 +2,21 @@ import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles(
   {
-  
     container: {
-      fontFamily:'interactive',
+      fontFamily: "interactive",
       backgroundColor: "#dee3e9",
       height: "100vh",
       display: "flex",
-       justifyContent: "space-between",
+      justifyContent: "space-between",
     },
+    buttonGoogleLogin: {
+      marginBottom: "15px",
+      width: "100%",
+    },
+    loginButton: {
+      width: "100%",
+    },
+
     left: {
       overflowY: "scroll",
       width: "70%",
@@ -108,15 +115,15 @@ const useStyles = createUseStyles(
     img6: {
       gridRow: "3 / span 5",
       gridColumn: "5 / span 7",
-    },  
+    },
     img7: {
       marginRight: "500px",
       marginTop: "-300px",
-    },  
+    },
     img8: {
       marginLeft: "600px",
       marginTop: "-350px",
-    },  
+    },
     lastDiv: {
       display: "flex",
     },
@@ -124,7 +131,7 @@ const useStyles = createUseStyles(
       color: "black",
       marginRight: "60%",
       fontSize: "25px",
-      fontFamily:  "Helvetica Neue",
+      fontFamily: "Helvetica Neue",
     },
     one: {
       margin: "30px",
@@ -132,7 +139,7 @@ const useStyles = createUseStyles(
       justifyContent: "center",
       alignItems: "center",
       flexDirection: "column",
-    }
+    },
   },
   { name: "login" }
 );
