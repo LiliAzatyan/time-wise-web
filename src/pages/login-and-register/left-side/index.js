@@ -64,7 +64,7 @@ const LeftSide = (props) => {
               like due dates, reminders, and task categorization.
               Note-taking and Documentation: Digital planners usually 
               include note-taking capabilities, enabling users to jot 
-              down ideas, thoughts, or important information.
+              down ideas, thoughts.
           </p>
           <img className={loginStyle.img8} src={picture_8} alt="groups img" />
         </div>
