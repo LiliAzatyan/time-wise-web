@@ -59,7 +59,7 @@ const Registration = () => {
           <h1>
             <span className={loginStyle.pp}>Personal Planner</span> for
             Organizing <br />
-            Work & Private Stuff
+            Work & Private Stuff1
           </h1>
           <h2>Don't wait for the future to happen to you</h2>
         </div>
