@@ -1,6 +1,6 @@
 .time-planner-container {
     text-align: center;
-    margin-top: 20px;
+    margin-top: -20px;
 }
 
 .calendar-container {
@@ -10,6 +10,11 @@
     overflow: hidden;
     background-color: #f0f5ff;
 }
+
+.custom-day {
+    background-color: #ffffff;
+}
+
 
 .modal {
     display: flex;
@@ -52,6 +57,21 @@
     transition: background-color 0.3s ease;
 }
 
+.custom-day {
+    background-color: #ffffff;
+}
+.today {
+    background-color: transparent;
+    color: grey;
+}
+
+
 .hover-effect:hover {
     background-color: #cce6ff;
 }
+.rbc-toolbar{
+    margin-bottom: 31px;
+    font-size: 20px;
+}
+
+
