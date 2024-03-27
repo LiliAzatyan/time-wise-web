@@ -9,70 +9,62 @@ const localizer = momentLocalizer(moment);
 
 const TimePlanner = () => {
     const [tasks,] = useState([]);
-    const [modalOpen, setModalOpen] = useState(false);
     const [selectedDate, setSelectedDate] = useState(null);
+    const [clickedDate, setClickedDate] = useState(null);
 
     const handleDateClick = (date) => {
         setSelectedDate(date);
-        setModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setModalOpen(false);
-    };
-
-    const handleEventClick = (event) => {
-        setSelectedDate(event.start);
-        setModalOpen(true);
+        setClickedDate(date);
     };
 
     const today = new Date();
 
     return (
-        <div className="time-planner-container">
-            {modalOpen && (
-                <div className="modal" onClick={closeModal}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                        <span className="close" onClick={closeModal}>&times;</span>
-                        <h3>{moment(selectedDate).format('MMMM Do, YYYY')}</h3>
-                        {selectedDate && tasks.filter(task =>
-                            moment(task.start).isSame(selectedDate, 'day')
-                        ).length === 0 ? (
-                            <p>No tasks scheduled for this day.</p>
-                        ) : (
-                            <ul>
-                                {tasks.filter(task =>
-                                    moment(task.start).isSame(selectedDate, 'day')
-                                ).map(task => (
-                                    <li key={task.id}>{task.title}</li>
-                                ))}
-                            </ul>
-                        )}
+        <div>
+            <div className="navbar">
+                Calendar
+            </div>
+
+            <div className="content-container">
+                <div className="tasks-container">
+                    <h2>Tasks</h2>
+                    {selectedDate && tasks.filter(task =>
+                        moment(task.start).isSame(selectedDate, 'day')
+                    ).length === 0 ? (
+                        <p>No tasks scheduled for this day.</p>
+                    ) : (
+                        <ul>
+                            {tasks.filter(task =>
+                                moment(task.start).isSame(selectedDate, 'day')
+                            ).map(task => (
+                                <li key={task.id} className={moment(task.start).isSame(clickedDate, 'day') ? 'selected' : ''}>{task.title}</li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
+                <div className="calendar-container">
+                    <div className="calendar-container" style={{ height: '690px' }}>
+                        <Calendar
+                            localizer={localizer}
+                            events={tasks}
+                            startAccessor="start"
+                            endAccessor="end"
+                            style={{ height: '100%' }}
+                            selectable={true}
+                            onSelectSlot={(slotInfo) => handleDateClick(slotInfo.start)}
+                            dayPropGetter={(date) => {
+                                if (moment(date).isSame(today, 'day')) {
+                                    return {
+                                        className: 'custom-day today hover-effect',
+                                    };
+                                }
+                                return {
+                                    className: 'custom-day hover-effect',
+                                };
+                            }}
+                        />
                     </div>
                 </div>
-            )}
-
-            <div className="calendar-container" style={{ height: '700px' }}>
-                <Calendar
-                    localizer={localizer}
-                    events={tasks}
-                    startAccessor="start"
-                    endAccessor="end"
-                    style={{ height: '100%' }}
-                    selectable={true}
-                    onSelectSlot={(slotInfo) => handleDateClick(slotInfo.start)}
-                    onSelectEvent={handleEventClick}
-                    dayPropGetter={(date) => {
-                        if (moment(date).isSame(today, 'day')) {
-                            return {
-                                className: 'custom-day today',
-                            };
-                        }
-                        return {
-                            className: 'custom-day hover-effect',
-                        };
-                    }}
-                />
             </div>
         </div>
     );
