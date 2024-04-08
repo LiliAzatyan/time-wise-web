@@ -39,10 +39,11 @@ export default function UserName() {
         fontSize: "50px",
         display: "flex",
         justifyContent: "flex-end",
-        marginLeft: "700px",
-        marginTop: "7px",
+        padding: "0 10px", 
+        // marginTop: "7px",
         color: iconColor,
         cursor: "pointer",
+        height: "80px",
       }}
     >
       <UserDeleteOutlined style={{ fontSize: "50px" }} /> {/* Maximize icon size */}

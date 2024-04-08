@@ -10,11 +10,11 @@ const NavBar = () => {
   const location = useLocation();
 
   return (
-    <Menu mode="horizontal" style={style}>
+    <Menu mode="vertical" style={style}>
       {MENU_ITEMS.map((item) => (
         <Menu.Item
           key={item.key}
-          style={{ color: "inherit", marginLeft: "30px" }}
+          style={{ color: "inherit", marginLeft: "1px" }}
           onClick={() =>
             location.pathname !== item.path ? navigate(item.path) : null
           }

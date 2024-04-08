@@ -1,5 +1,5 @@
 import { LOGIN, REGISTRATION } from "../../components/constants/path";
-import UserName from "../../components/profile";
+import UserName from "../../components/profile/UserName";
 import { useLocation } from "react-router-dom";
 import NavBar from "../../components/NavBar";
 import Logo from "../../components/Logo";
@@ -14,13 +14,10 @@ const Header = () => {
       {location.pathname !== LOGIN && location.pathname !== REGISTRATION && (
         <div
           style={{
-            backgroundColor: "#2F291B",
-            display: "flex",
+            backgroundColor: "blue",
           }}
         >
-          <Logo />
-          <NavBar />
-          <UserName />
+          <UserName/>
         </div>
       )}
     </>

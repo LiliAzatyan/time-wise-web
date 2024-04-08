@@ -20,7 +20,7 @@ const TimePlanner = () => {
     const today = new Date();
 
     return (
-        <div>
+        <div className='general-container'>
             <div className="navbar">
                 Calendar
             </div>

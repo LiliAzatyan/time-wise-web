@@ -8,14 +8,16 @@ const ProjectTitle = () => {
   const location = useLocation();
 
   return (
-    <div
-      onClick={() => (location.pathname !== HOME ? navigate(HOME) : null)}
-      style={{
-        cursor: "pointer",
-      color: "#DE8300",
-      }}
-    >
-      <h1>Personal Planner</h1>
+    <div onClick={() => (location.pathname !== HOME ? navigate(HOME) : null)}>
+      <h1
+        style={{
+          cursor: "pointer",
+          color: "#DE8300",
+          height: "80px",
+        }}
+      >
+        Personal Planner
+      </h1>
     </div>
   );
 };

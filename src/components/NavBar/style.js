@@ -1,9 +1,12 @@
 export const style = {
-    backgroundColor: "#2F291B",
+    backgroundColor: "transparent",
     justifyContent: "center",
     alignItems: "center",
     textDecoration: "none",
     color: "white",
     fontSize: "20px",
-    width: "40%",
+    padding: 0,
+    margin: 0,
+    // width: "40%",
+    // height: "800px",
 };

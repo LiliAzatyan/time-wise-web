@@ -1,12 +1,17 @@
+.general-container {
+    margin-left: 140px;
+}
+
 .navbar {
-    background-color: #fFFFFF;
+    /* background-color: #22e61b; */
     height: 50px;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
     padding: 20px;
     font-size: 20px;
     font-weight: bold;
+    margin-right: 100px;
 }
 
 .content-container {

@@ -8,12 +8,14 @@ import HomePage from "./pages/home";
 import Invite from "./pages/invite";
 import React from "react";
 import "./App.css";
+import LeftSide from "./components/LeftSide/LeftSide";
 
 const App = () => {
   
   return (
     
     <BrowserRouter>
+      <LeftSide/>
       <Header />
       <Routes>
         <Route path={LOGIN} element={<LoginAndRegister />} />
