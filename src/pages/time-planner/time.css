@@ -1,77 +1,53 @@
-.time-planner-container {
-    text-align: center;
-    margin-top: -20px;
+.navbar {
+    background-color: #fFFFFF;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.content-container {
+    display: flex;
+}
+
+.tasks-container {
+    width: 200px;
+    background-color: #fFFFFF;
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+}
+
+.tasks-container h2 {
+    margin-top: 0;
 }
 
 .calendar-container {
-    margin-top: 20px;
+    flex-grow: 1;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
     overflow: hidden;
     background-color: #f0f5ff;
 }
 
 .custom-day {
-    background-color: #ffffff;
-}
-
-
-.modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-}
-
-.modal-content {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 255, 0.3);
-    z-index: 99999;
-}
-
-.close {
-    color: #0000ff;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.hover-effect {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.custom-day {
-    background-color: #ffffff;
-}
-.today {
-    background-color: transparent;
-    color: grey;
-}
-
-
-.hover-effect:hover {
+.custom-day:hover {
     background-color: #cce6ff;
 }
-.rbc-toolbar{
-    margin-bottom: 31px;
-    font-size: 20px;
+
+
+
+.tasks-container ul li.selected {
+    background-color: #cce6ff;
+    color: #333;
 }
 
-
+.tasks-container ul li.selected:hover {
+    background-color: #cce6ff;
+}
