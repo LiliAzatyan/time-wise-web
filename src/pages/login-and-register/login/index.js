@@ -1,7 +1,6 @@
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { HOME } from "../../../components/constants/path";
 import { Button, Checkbox, Form, Input } from "antd";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import { memo, useState } from "react";
 import useStyles from "../style";
