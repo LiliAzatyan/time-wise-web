@@ -1,78 +1,135 @@
-import React from 'react';
 import { AppstoreOutlined, RestOutlined, AreaChartOutlined, FileDoneOutlined, AimOutlined } from '@ant-design/icons';
+import React, { useState } from 'react';
 import { Menu } from 'antd';
-
-function getItem(label, key, icon, children, type) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-    type,
-  };
-}
+import { Link } from 'react-router-dom';
 
 const items = [
-  getItem('My Planner', 'sub1', <AreaChartOutlined />, [
-    getItem('Item 1', 'g1', null, [getItem('Option 1', '1'), getItem('Option 2', '2')], 'group'),
-    getItem('Item 2', 'g2', null, [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
-  ]),
   {
-    type: 'divider',
+    label: 'My Planner',
+    key: 'my-planner',
+    icon: <AreaChartOutlined />,
+    children: [
+      {
+        type: 'group',
+        children: [
+          {
+            label: <Link to="/my-planner">Item 1</Link>,
+            key: 'my-planner-item-1',
+          },
+          {
+            label: <Link to="/my-planner/">Item 2</Link>,
+            key: 'my-planner-item-2',
+          },
+        ],
+      }
+    ],
   },
-  getItem('Calendar', 'sub2', <AppstoreOutlined />, [
-    getItem('Option 5', '5'),
-    getItem('Option 6', '6'),
-    getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
-  ]),
   {
-    type: 'divider',
+    label: 'Calendar',
+    key: 'calendar',
+    icon: <AppstoreOutlined />,
+    children: [
+      {
+        type: 'group',
+        children: [
+          {
+            label: <Link to="/calendar/">Option 1</Link>,
+            key: 'calendar-option-1',
+          },
+          {
+            label: <Link to="/calendar/">Option 2</Link>,
+            key: 'calendar-option-2',
+          },
+        ],
+      }
+    ],
   },
-  getItem('Documents', 'sub4', <FileDoneOutlined />, [
-    getItem('Option 9', '9'),
-    getItem('Option 10', '10'),
-    getItem('Option 11', '11'),
-    getItem('Option 12', '12'),
-  ]),
-  // Add more menus here
-  getItem('Goal Tracker', 'sub5', <AimOutlined />, [
-    getItem('Option 13', '13'),
-    getItem('Option 14', '14'),
-  ]),
   {
-    type: 'divider',
+    label: 'Documents',
+    key: 'documents',
+    icon: <FileDoneOutlined />,
+    children: [
+      {
+        type: 'group',
+        children: [
+          {
+            label: <Link to="/documents">Option 1</Link>,
+            key: 'documents-option-1',
+          },
+          {
+            label: <Link to="/documents">Option 2</Link>,
+            key: 'documents-option-2',
+          },
+        ],
+      }
+    ],
   },
-  getItem('My archive', 'sub6', <RestOutlined />, [
-    getItem('Option 15', '15'),
-    getItem('Option 16', '16'),
-  ]),
+  {
+    label: 'Goal Tracking',
+    key: 'goal-tracking',
+    icon: <AimOutlined />,
+    children: [
+      {
+        type: 'group',
+        children: [
+          {
+            label: <Link to="/goal-tracking">Option 1</Link>,
+            key: 'goal-tracking-option-1',
+          },
+          {
+            label: <Link to="/goal-tracking">Option 2</Link>,
+            key: 'goal-tracking-option-2',
+          },
+        ],
+      }
+    ],
+  },
+  {
+    label: 'My Archive',
+    key: 'my-archive', 
+    icon: <RestOutlined />,
+    children: [
+      {
+        type: 'group',
+        children: [
+          {
+            label: <Link to="/my-archive">Option 1</Link>,
+            key: 'my-archive-option-1',
+          },
+          {
+            label: <Link to="/my-archive">Option 2</Link>,
+            key: 'my-archive-option-2',
+          },
+        ],
+      }
+    ],
+  },
 ];
 
 const App = () => {
+  const [current, setCurrent] = useState('my-planner');
+
   const onClick = (e) => {
     console.log('click ', e);
+    setCurrent(e.key);
   };
 
   return (
     <div>
-      <div style={{height: '63px', marginTop: '0px'}}>
-        Logo
-      </div>
-      <div style={{height: '100vh',borderRight: 'solid 0.5px', borderColor:"#999"}}>
-        
-    <Menu
-      onClick={onClick}
-      style={{
-        width: '100%',
-      }}
-      defaultSelectedKeys={['1']}
-      // defaultOpenKeys={['sub1']}
-      mode="inline"
-      items={items}
-      />
-      </div>
-    </div>
+       <div style={{height: '63px', marginTop: '0px'}}>
+         Logo
+       </div>
+       <div style={{height: '100vh', marginTop: "40px"}}>
+      
+       <Menu onClick={onClick} selectedKeys={[current]} mode="inline" items={items} />
+    
+       </div>
+     </div>
   );
 };
 
 export default App;
+
+
+
+
