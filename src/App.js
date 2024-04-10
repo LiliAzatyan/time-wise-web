@@ -17,11 +17,17 @@
 
 // export default App;
 
-
 import React from 'react';
 import { Layout, Flex } from 'antd';
-import SiderLayout from './layouts/SiderLayout'
-import HeaderLayout from './layouts/Header'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SiderLayout from './layouts/SiderLayout';
+import HeaderLayout from './layouts/Header';
+import MyPlanner from './pages/my-planner/MyPlanner'; 
+import Calendar from './pages/calendar/Calendar';
+import Documents from './pages/documents/Documents';
+import GoalTracking from './pages/goal-tracking/GoalTracking';
+import MyArchive from './pages/my-archive/MyArchive';
+
 
 const { Header, Sider, Content } = Layout;
 const headerStyle = {
@@ -30,20 +36,22 @@ const headerStyle = {
   height: 64,
   paddingInline: 48,
   lineHeight: '64px',
-  backgroundColor: '#4096ff',
+  backgroundColor: '#fff',
+  borderBottom: 'solid 1px',
+  borderColor: '#999'
 };
 const contentStyle = {
   textAlign: 'center',
   minHeight: 120,
   lineHeight: '120px',
-  color: '#fff',
-  backgroundColor: '#0958d9',
+  color: '#000',
+  backgroundColor: '#ddd',
 };
 const siderStyle = {
   textAlign: 'center',
   lineHeight: '120px',
-  color: '#fff',
-  backgroundColor: '#1677ff',
+  color: '#000',
+  backgroundColor: '#ffffff',
 };
 
 const layoutStyle = {
@@ -54,22 +62,28 @@ const layoutStyle = {
 };
 const App = () => (
   <Flex gap="middle" wrap="wrap">
-
-    <Layout style={layoutStyle}>
-      <Sider width="25%" style={siderStyle}>
-        <SiderLayout />
-      </Sider>
-      <Layout>
-        <Header style={headerStyle}>
-          <HeaderLayout />
-        </Header>
-        <Content style={contentStyle}>
-          
-          Content
-          
-        </Content>
+    <BrowserRouter>
+      <Layout style={layoutStyle}>
+        <Sider width="25%" style={siderStyle}>
+          <SiderLayout />
+        </Sider>
+        <Layout>
+          <Header style={headerStyle}>
+            <HeaderLayout />
+          </Header>
+          <Content style={contentStyle}>
+            <Routes>
+              {/* <Route path="/" element={} /> */}
+              <Route path="/my-planner" element={<MyPlanner />} />
+              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/documents" element={<Documents />} />
+              <Route path="/goal-tracking" element={<GoalTracking />} />
+              <Route path="/my-archive" element={<MyArchive />} />
+            </Routes>
+          </Content>
+        </Layout>
       </Layout>
-    </Layout>
+    </BrowserRouter>
   </Flex>
 );
 export default App;
