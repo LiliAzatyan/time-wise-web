@@ -1,0 +1,165 @@
+.daily-tasks-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    line-height: 15px;
+    height: calc(100vh - 40px);
+    overflow-y: auto;
+}
+
+.tasks-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.task-card {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin: 10px;
+    width: 322px;
+}
+
+.task-card h3 {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.due-date-checkbox {
+    display: flex;
+}
+
+.due-date-checkbox span {
+    margin-right: 10px;
+}
+
+.add-task-div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 25px;
+    width: 1020px;
+    height: 75px;
+    background-color: #ffffff;
+    box-shadow: 2px -2px 10px rgba(3,3,3,0.1);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.add-task-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 25px;
+}
+
+.input.title-input {
+    top: 440px;
+    left: 321px;
+    width: 1008px;
+    height: 41px;
+    padding: 0px 8px;
+    border: 0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    box-shadow: 2px 2px 4px rgba(3, 3, 3, 0.1);
+    background-color: #ffffff;
+    color: #a9a9a9;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    outline: none;
+}
+
+.add-task-description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 25px;
+}
+
+.input.description-input {
+    top: 511px;
+    left: 321px;
+    width: 1006px;
+    height: 112px;
+    padding: 0px 8px;
+    border: 0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    box-shadow: 2px 2px 4px rgba(3, 3, 3, 0.1);
+    background-color: #ffffff;
+    color: #a9a9a9;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    outline: none;
+}
+
+.input.date-input {
+    top: 644px;
+    left: 321px;
+    width: 1006px;
+    height: 44px;
+    padding: 0px 8px;
+    border: 0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    box-shadow: 2px 2px 4px rgba(3, 3, 3, 0.1);
+    background-color: #ffffff;
+    color: #a9a9a9;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    outline: none;
+}
+
+.add-task-date {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 25px;
+}
+
+.add-task-priority {
+    display: flex;
+    flex-direction: column;
+    width: 1006px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 15px;
+}
+
+.save-button, .cancel-button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.save-button:hover, .cancel-button:hover {
+    background-color: #333;
+}
+
+.delete-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #1241d9;
+}
+
+.delete-icon svg {
+    font-size: 20px;
+}
