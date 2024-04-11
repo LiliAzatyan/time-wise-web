@@ -25,7 +25,7 @@ const headerStyle = {
 const contentStyle = {
   textAlign: 'center',
   color: '#000',
-  backgroundColor: '#ddd',
+  backgroundColor: '#F8FFFF',
 };
 const siderStyle = {
   textAlign: 'center',
@@ -40,6 +40,8 @@ const layoutStyle = {
   height: '100vh',
 };
 const App = () => (
+  <div style={{padding: "0px", margin: "0px"}}>
+
   <Flex gap="middle" wrap="wrap">
     <BrowserRouter>
       <Layout style={layoutStyle}>
@@ -65,5 +67,6 @@ const App = () => (
       </Layout>
     </BrowserRouter>
   </Flex>
+  </div>
 );
 export default App;
