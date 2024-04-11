@@ -47,7 +47,7 @@ const App = () => {
   return (
     <div>
       <div style={{height: '63px', marginTop: '0px'}}>
-        Logo
+        <img src="./pp.png" alt="Logo" />
       </div>
       <div style={{height: '100vh', marginTop: "40px"}}>
         {items.map(item => (
