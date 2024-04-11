@@ -1,135 +1,71 @@
-import { AppstoreOutlined, RestOutlined, AreaChartOutlined, FileDoneOutlined, AimOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
-import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
+import { AppstoreOutlined, RestOutlined, AreaChartOutlined, FileDoneOutlined, AimOutlined } from '@ant-design/icons';
 
 const items = [
   {
     label: 'My Planner',
     key: 'my-planner',
     icon: <AreaChartOutlined />,
-    children: [
-      {
-        type: 'group',
-        children: [
-          {
-            label: <Link to="/my-planner">Item 1</Link>,
-            key: 'my-planner-item-1',
-          },
-          {
-            label: <Link to="/my-planner/">Item 2</Link>,
-            key: 'my-planner-item-2',
-          },
-        ],
-      }
-    ],
+    link: '/my-planner',
   },
   {
     label: 'Calendar',
     key: 'calendar',
     icon: <AppstoreOutlined />,
-    children: [
-      {
-        type: 'group',
-        children: [
-          {
-            label: <Link to="/calendar/">Option 1</Link>,
-            key: 'calendar-option-1',
-          },
-          {
-            label: <Link to="/calendar/">Option 2</Link>,
-            key: 'calendar-option-2',
-          },
-        ],
-      }
-    ],
+    link: '/calendar',
   },
+  
   {
     label: 'Documents',
     key: 'documents',
     icon: <FileDoneOutlined />,
-    children: [
-      {
-        type: 'group',
-        children: [
-          {
-            label: <Link to="/documents">Option 1</Link>,
-            key: 'documents-option-1',
-          },
-          {
-            label: <Link to="/documents">Option 2</Link>,
-            key: 'documents-option-2',
-          },
-        ],
-      }
-    ],
+    link: '/documents',
   },
   {
     label: 'Goal Tracking',
     key: 'goal-tracking',
     icon: <AimOutlined />,
-    children: [
-      {
-        type: 'group',
-        children: [
-          {
-            label: <Link to="/goal-tracking">Option 1</Link>,
-            key: 'goal-tracking-option-1',
-          },
-          {
-            label: <Link to="/goal-tracking">Option 2</Link>,
-            key: 'goal-tracking-option-2',
-          },
-        ],
-      }
-    ],
+    link: '/goal-tracking',
   },
   {
     label: 'My Archive',
-    key: 'my-archive', 
+    key: 'my-archive',
     icon: <RestOutlined />,
-    children: [
-      {
-        type: 'group',
-        children: [
-          {
-            label: <Link to="/my-archive">Option 1</Link>,
-            key: 'my-archive-option-1',
-          },
-          {
-            label: <Link to="/my-archive">Option 2</Link>,
-            key: 'my-archive-option-2',
-          },
-        ],
-      }
-    ],
+    link: '/my-archive',
   },
 ];
 
 const App = () => {
   const [current, setCurrent] = useState('my-planner');
 
-  const onClick = (e) => {
-    console.log('click ', e);
-    setCurrent(e.key);
+  const onClick = (key) => {
+    console.log('click ', key);
+    setCurrent(key);
   };
 
   return (
     <div>
-       <div style={{height: '63px', marginTop: '0px'}}>
-         Logo
-       </div>
-       <div style={{height: '100vh', marginTop: "40px"}}>
-      
-       <Menu onClick={onClick} selectedKeys={[current]} mode="inline" items={items} />
-    
-       </div>
-     </div>
+      <div style={{height: '63px', marginTop: '0px'}}>
+        Logo
+      </div>
+      <div style={{height: '100vh', marginTop: "40px"}}>
+        {items.map(item => (
+          <div key={item.key} style={{ marginBottom: '10px' }}>
+            <Link to={item.link} style={{ textDecoration: 'none' }}>
+              <button
+                onClick={() => onClick(item.key)}
+                style={{ padding: '10px 20px', fontSize: '16px', backgroundColor: current === item.key ? '#007bff' : '#fff', color: current === item.key ? '#fff' : '#000', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
+              >
+                {item.icon}
+                <span style={{ marginLeft: '8px' }}>{item.label}</span>
+              </button>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
 export default App;
-
-
-
-
