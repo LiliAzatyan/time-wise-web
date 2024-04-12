@@ -43,17 +43,33 @@ const App = () => {
     console.log('click ', key);
     setCurrent(key);
   };
-
+  const [isClicked, setIsClicked] = useState(false);
+  const handleClick = () => {
+    setIsClicked(true);
+    setTimeout(() => setIsClicked(false), 1000);
+  };
   return (
     <div>
       <div style={{height: '63px', marginTop: '0px'}}>
-        <img src="./pp.png" alt="Logo" />
+        
+
+       <a href="/home" onClick={handleClick}>
+              <button style={{backgroundColor: "white"}}
+                className={`button ${isClicked ? "true" : "false"}`}
+                onClick={handleClick}
+              >
+                <img src="./pp.png" alt="Logo"/>
+              </button>
+      </a>
+
+
+
       </div>
       <div style={{height: '100vh', marginTop: "40px"}}>
         {items.map(item => (
           <div key={item.key} style={{ marginBottom: '10px' }}>
             <Link to={item.link} style={{ textDecoration: 'none' }}>
-              <button
+              <button 
                 onClick={() => onClick(item.key)}
                 style={{ padding: '10px 20px', fontSize: '16px', backgroundColor: current === item.key ? '#007bff' : '#fff', color: current === item.key ? '#fff' : '#000', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
               >

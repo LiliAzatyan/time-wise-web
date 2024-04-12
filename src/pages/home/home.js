@@ -72,9 +72,6 @@ function Home() {
                 Start Planning Now
               </button>
                 </a>
-            {/* <Link to="my-planner"> */}
-                
-            {/* </Link> */}
           </div>
           <div className="images">
             <img src={image} alt="Image" />
@@ -100,7 +97,14 @@ function Home() {
               task management, and calendar integration for efficient work
               scheduling.
             </p>
-            <button className="button1">Start organizing now</button>
+
+            <a href="/documents" onClick={handleClick}>
+              <button
+                className={`button ${isClicked ? "bubble" : ""}`}
+                onClick={handleClick}
+              >Start organizing now</button>
+            </a>
+
           </div>
         </div>
       </div>
@@ -124,7 +128,12 @@ function Home() {
               Personal Planner enhances work efficiency with task management and
               calendar integration, ensuring a seamless workflow.
             </p>
-            <button className="discover-button">Discover more features</button>
+            <a href="/documents" onClick={handleClick}>
+              <button
+                className={`button ${isClicked ? "bubble" : ""}`}
+                onClick={handleClick}
+              >Discover more features</button>
+            </a>
           </div>
           <div className="images">
             <img src={image2} alt="Image 2" />
@@ -150,7 +159,11 @@ function Home() {
             </h2>
           </div>
           <div className="text">
-            <button className="add-goals-button">Add your goals</button>
+          <a href="/documents" onClick={handleClick}>
+              
+            <button className={`add-goals-button ${isClicked ? "bubble" : ""}`}
+                onClick={handleClick}>Add your goals</button>
+          </a>
           </div>
         </div>
       </div>
