@@ -46,6 +46,7 @@ const App = () => (
     
       <Routes>
         <Route path="/" element={<LoginRegister />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/my-planner" element={<Layout style={layoutStyle}>
           <Sider width="25%" style={siderStyle}>
             <SiderLayout />
@@ -111,7 +112,7 @@ const App = () => (
             </Content>
           </Layout>
         </Layout>} />
-        <Route path="/home" element={<Layout style={layoutStyle}>
+        <Route path="/workspace" element={<Layout style={layoutStyle}>
           <Sider width="25%" style={siderStyle}>
             <SiderLayout />
           </Sider>
@@ -120,7 +121,7 @@ const App = () => (
               <HeaderLayout />
             </Header>
             <Content style={contentStyle}>
-              <Home />
+              {/* <Home /> */}
             </Content>
           </Layout>
         </Layout>} />
