@@ -133,12 +133,12 @@ function MyPlanner() {
                         type="checkbox"
                         onChange={() => handlePriorityChange('low')}
                     />
-                    <label>Low</label>
+                    <label>Low </label>
                     <input
                         type="checkbox"
                         onChange={() => handlePriorityChange('medium')}
                     />
-                    <label>Medium</label>
+                    <label>Medium </label>
                     <input
                         type="checkbox"
                         onChange={() => handlePriorityChange('high')}

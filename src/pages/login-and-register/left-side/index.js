@@ -16,8 +16,8 @@ const LeftSide = (props) => {
     return (
         <div className={loginStyle.left}>
         <div className={loginStyle.heading}>
-          <h1 className={loginStyle}>
-            <span className={loginStyle.colorOrange}>Personal Planner</span> for
+          <h1 className={loginStyle} style={{fontSize: "30px"}}>
+            <span className={loginStyle.colorOrange}>Time Wise</span> for
             Organizing <br />
             Work & Private Stuff
           </h1>

@@ -52,18 +52,15 @@ const App = () => {
     <div>
       <div style={{height: '63px', marginTop: '0px'}}>
         
-
        <a href="/home" onClick={handleClick}>
               <button style={{backgroundColor: "white"}}
                 className={`button ${isClicked ? "true" : "false"}`}
                 onClick={handleClick}
               >
-                <img src="./pp.png" alt="Logo"/>
+                <img src="./TimeWise2.png" alt="Logo" width="100%"/>
               </button>
       </a>
-
-
-
+      
       </div>
       <div style={{height: '100vh', marginTop: "40px"}}>
         {items.map(item => (

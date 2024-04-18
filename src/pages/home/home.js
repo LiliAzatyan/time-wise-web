@@ -16,7 +16,7 @@ function Home() {
     <div>
       <div className="header">
         <h1 className="typing-demo">
-          Organize your life with our personal planner app
+          Organize your life with our Time Wise app
         </h1>
       </div>
       <Link
@@ -58,9 +58,9 @@ function Home() {
       <div id="section1" className="section">
         <div className="row">
           <div className="text">
-            <h2>Personal Planner: Organize work schedules with ease</h2>
+            <h2>Time Wise: Organize work schedules with ease</h2>
             <p>
-              Personal Planner is a user-friendly app for organizing work
+            Time Wise is a user-friendly app for organizing work
               schedules, meetings, tasks, and documents efficiently.
             </p>
 
@@ -89,11 +89,11 @@ function Home() {
           </div>
           <div className="text">
             <h2>
-              Personal Planner offers seamless task and document management with
+            Time Wise offers seamless task and document management with
               calendar integration
             </h2>
             <p>
-              Stay organized with Personal Planner's user-friendly interface,
+              Stay organized with Time Wise's user-friendly interface,
               task management, and calendar integration for efficient work
               scheduling.
             </p>
@@ -121,11 +121,11 @@ function Home() {
         <div className="row">
           <div className="text">
             <h2>
-              Boost productivity with Personal Planner's task management and
+              Boost productivity with Time Wise's task management and
               calendar integration.
             </h2>
             <p>
-              Personal Planner enhances work efficiency with task management and
+              Time Wise enhances work efficiency with task management and
               calendar integration, ensuring a seamless workflow.
             </p>
             <a href="/documents" onClick={handleClick}>
@@ -154,12 +154,12 @@ function Home() {
         <div className="row">
           <div className="text">
             <h2>
-              Personal Planner offers seamless task and document management with
+              Time Wise offers seamless task and document management with
               calendar integration.
             </h2>
           </div>
           <div className="text">
-          <a href="/documents" onClick={handleClick}>
+          <a href="/goal-tracking" onClick={handleClick}>
               
             <button className={`add-goals-button ${isClicked ? "bubble" : ""}`}
                 onClick={handleClick}>Add your goals</button>

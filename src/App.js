@@ -43,7 +43,6 @@ const App = () => (
 
   <Flex gap="middle" wrap="wrap">
     <BrowserRouter>
-    
       <Routes>
         <Route path="/" element={<LoginRegister />} />
         <Route path="/home" element={<Home />} />

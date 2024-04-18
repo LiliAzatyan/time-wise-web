@@ -48,7 +48,7 @@ const App = () => {
       </Header>
       <Drawer title="" onClose={onClose} visible={open}>
         <div style={{ position: 'relative', height: '100%' }}>
-          <div style={{ textAlign: 'center', marginTop: '16px' }}>
+          <div style={{ textAlign: 'center', marginTop: '16px', marginLeft: "50px" }}>
             <Avatar size={64} icon={<UserOutlined />} />
             <div style={{ marginTop: '8px', fontSize: '16px', fontWeight: 'bold' }}>Your Account</div>
           </div>

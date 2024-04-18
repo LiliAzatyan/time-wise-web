@@ -59,12 +59,13 @@
     flex-direction: column;
     align-items: flex-start;
     padding-left: 25px;
+    width: 800px;
+    height: 40px;
 }
 
 .input.title-input {
     top: 440px;
     left: 321px;
-    width: 1008px;
     height: 41px;
     padding: 0px 8px;
     border: 0;
@@ -81,6 +82,8 @@
 
 .add-task-description {
     display: flex;
+    width: 800px;
+    height: 100px;
     flex-direction: column;
     align-items: flex-start;
     padding-left: 25px;
@@ -127,20 +130,24 @@
     flex-direction: column;
     align-items: flex-start;
     padding-left: 25px;
+    width: 800px;
+    height: 40px;
 }
 
 .add-task-priority {
     display: flex;
     flex-direction: column;
-    width: 1006px;
     justify-content: flex-start;
     align-items: flex-start;
-    padding-left: 15px;
+    font-size: 15px;
+    width: 800px;
+    height: 40px;
 }
 
 .save-button, .cancel-button {
     background-color: black;
     color: white;
+    margin-left: 10px;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
