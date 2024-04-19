@@ -1,37 +1,16 @@
-.bigGoal {
-    display: flex;
-    width: 1006px;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding-left: 15px;
+.section-1 {
+    background-color: rgb(236, 200, 244);
 }
 
-.allGoals{
+.welcome-box {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    line-height: 15px;
-    height: calc(100vh - 40px);
-    overflow-y: auto;
-}
-
-.singleGoal{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    border: 1px solid #a9a9a9;
-    border-radius: 24px;
+    text-align: start;
     padding: 10px;
-    margin: 10px;
-    width: 800px;
-    float: left;
 }
 
-.goalBtn{
-    background: #000;
-    color: white;
-    margin: 10px;
+.welcome-section {
+    display: flex;
+    text-align: start;
+    padding: 10px;
 }
-
