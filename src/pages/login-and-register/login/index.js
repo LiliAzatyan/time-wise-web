@@ -107,7 +107,7 @@ const Login = (props) => {
         </Form.Item>
         <Form.Item>
           {loginSuccess ? (
-            <Link to="/home">
+            <Link to="/my-planner">
               <Button type="primary" size="large">
                 Login
               </Button>
