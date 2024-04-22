@@ -1,67 +1,51 @@
+import React, { useState } from "react";
 import { Button, Form, Input } from "antd";
+import { Link } from "react-router-dom";
 import { memo } from "react";
 
-import React from "react";
-let users = []
 const Register = (props) => {
   const { setShowLogin } = props;
 
-  const [form] = Form.useForm();
+  const [isFormValid, setIsFormValid] = useState(false);
+
   const onFinish = (values) => {
-    users.push(values)
-    localStorage.setItem("users", JSON.stringify(users))
-    form.resetFields()
-    console.log(users);
+    localStorage.setItem("users", JSON.stringify([values]));
   };
   
-  const formItemLayout = {
-    labelCol: {
-      xs: {
-        span: 20,
-      },
-      sm: {
-        span: 10,
-        offset: 1 
-      },
-    },
-    wrapperCol: {
-      xs: {
-        span: 24,
-      },
-      sm: {
-        span: 18, 
-      },
-    },
+  const handleClick = () => {
+    localStorage.setItem("isFromRegister", true); 
+    console.log(localStorage.getItem("isFromRegister"));
+    
+  }
+
+  const validateForm = () => {
+    form
+      .validateFields()
+      .then(() => setIsFormValid(true))
+      .catch(() => setIsFormValid(false));
   };
-  const tailFormItemLayout = {
-    wrapperCol: {
-      xs: {
-        span: 24,
-        offset: 0,
-      },
-      sm: {
-        span: 16,
-        offset: 8,
-      },
-    },
-  };
+
+  const [form] = Form.useForm();
+
   return (
     <Form
-      {...formItemLayout}
       form={form}
       name="register"
       onFinish={onFinish}
       initialValues={{
-        residence: ["zhejiang", "hangzhou", "xihu"],
-        prefix: "86",
-      }}
-      style={{
-        maxWidth: 600,
+        Fullname: "",
+        email: "",
+        password: "",
+        confirm: "",
       }}
       scrollToFirstError
     >
-      <Form.Item name="Fullname" label="Full Name">
-        <Input />
+      <Form.Item
+        name="Fullname"
+        label="Full Name"
+        rules={[{ required: true, message: "Please input your full name!" }]}
+      >
+        <Input onChange={validateForm} />
       </Form.Item>
       <Form.Item
         name="email"
@@ -69,63 +53,75 @@ const Register = (props) => {
         rules={[
           {
             type: "email",
-            message: "The input is not valid E-mail!",
-          },
-          {
             required: true,
-            message: "Please input your E-mail!",
+            message: "Please input a valid email address!",
           },
         ]}
       >
-        <Input />
+        <Input onChange={validateForm} />
       </Form.Item>
       <Form.Item
         name="password"
         label="Password"
         rules={[
-          {
-            required: true,
-            message: "Please input your password!",
-          },
+          { required: true, message: "Please input your password!" },
+          { min: 6, message: "Password must be at least 6 characters long!" },
         ]}
         hasFeedback
       >
-        <Input.Password />
+        <Input.Password onChange={validateForm} />
       </Form.Item>
-      <Form.Item 
+      <Form.Item
         name="confirm"
-        label="Confirm Password" 
+        label="Confirm Password"
         dependencies={["password"]}
         hasFeedback
         rules={[
-          {
-            required: true,
-            message: "Please confirm your password!",
-          },
+          { required: true, message: "Please confirm your password!" },
           ({ getFieldValue }) => ({
             validator(_, value) {
               if (!value || getFieldValue("password") === value) {
                 return Promise.resolve();
               }
               return Promise.reject(
-                new Error("The new password that you entered do not match!")
+                new Error("The passwords that you entered do not match!")
               );
             },
           }),
         ]}
       >
-        <Input.Password />
+        <Input.Password onChange={validateForm} />
       </Form.Item>
-      <Form.Item {...tailFormItemLayout}>
-        <Button
-          type="primary"
-          htmlType="submit"
-          style={{ width: "100%", height: "44px", borderRadius: "23px" }}
-        >
-          Register
-        </Button>
+      <Form.Item>
+        {!isFormValid ? (
+          <Button
+            type="primary"
+            htmlType="submit"
+            style={{ width: "100%" }}
+            disabled={!isFormValid}
+          >
+            Register
+          </Button>
+        ) : (
+          <Link to="/my-planner">
+            <Button
+            type="primary"
+            htmlType="submit"
+            style={{ width: "100%" }}
+            disabled={!isFormValid}
+            onClick={handleClick}
+          >
+            Register
+          </Button>
+          </Link>
+        )}
       </Form.Item>
-      Already have an account? <a href="#" onClick={() => setShowLogin(true)}>Sign In</a>
+      <p>
+        Already have an account?{" "}
+        <Link to="#" onClick={() => setShowLogin(true)}>
+          Sign In
+        </Link>
+      </p>
     </Form>
   );
 };
