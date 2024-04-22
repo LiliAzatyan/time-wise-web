@@ -1,43 +1,47 @@
-.section-1 {
+.container {
+    font-family: Arial, sans-serif;
+  }
+  
+  .section-1 {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     background-color: rgb(246, 236, 219);
     padding: 10px;
-}
-
-.welcome-box {
+  }
+  
+  .welcome-box {
     display: block;
     text-align: start;
-}
-
-.input-btn-container {
+  }
+  
+  .input-btn-container {
     display: flex;
     align-items: center;
-}
-
-.search-input {
+  }
+  
+  .search-input {
     height: 25px;
     border-radius: 10rem;
-    padding: 10px 35px 10px 10px; 
+    padding: 10px 35px 10px 10px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fff;
-    background-image: url('./goals-pictures/search-icone.svg'); 
+    background-image: url('./goals-pictures/search-icone.svg');
     background-size: 16px;
     background-repeat: no-repeat;
     background-position: calc(100% - 8px) center;
-}
-
-.add-btn {
-    width: 55px;
+  }
+  
+  .add-btn {
+    width: 85px;
     height: 25px;
     border-radius: 10rem;
-    margin-left: 10px; 
+    margin-left: 10px;
     cursor: pointer;
-}
-
-.popup-overlay {
+  }
+  
+  .popup-overlay {
     position: fixed;
     z-index: 1;
     left: 0;
@@ -48,28 +52,98 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.popup {
+  }
+  
+  .popup {
     background-color: #fefefe;
-    margin: 15% auto;
     padding: 20px;
-    border-radius: 5px;
-    width: 50%;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: relative;
-}
-
-.close {
+    max-width: 500px;
+    width: 90%;
+  }
+  
+  .close {
     color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
     cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
+  }
+  
+  .close:hover,
+  .close:focus {
     color: black;
     text-decoration: none;
 }
+
+.form-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-box input,
+.form-box textarea,
+.form-box label {
+  margin-bottom: 10px;
+}
+
+.priority-section {
+  margin-bottom: 20px;
+}
+
+.date-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.submit-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+
+/* Styling for Goals section */
+.section-2 {
+  margin-top: 20px;
+}
+
+.goals-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.goals-list li {
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.goals-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.goals-list li strong {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.goals-list li p {
+  margin: 0;
+}  
