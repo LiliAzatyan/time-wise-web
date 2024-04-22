@@ -1,16 +1,75 @@
 .section-1 {
-    background-color: rgb(236, 200, 244);
+    display: flex;
+    justify-content: space-between; 
+    background-color: rgb(246, 236, 219);
+    padding: 10px;
 }
 
 .welcome-box {
-    display: flex;
-    flex-direction: column;
+    display: block;
     text-align: start;
-    padding: 10px;
 }
 
-.welcome-section {
+.input-btn-container {
     display: flex;
-    text-align: start;
-    padding: 10px;
+    align-items: center;
+}
+
+.search-input {
+    height: 25px;
+    border-radius: 10rem;
+    padding: 10px 35px 10px 10px; 
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    background-image: url('./goals-pictures/search-icone.svg'); 
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 8px) center;
+}
+
+.add-btn {
+    width: 55px;
+    height: 25px;
+    border-radius: 10rem;
+    margin-left: 10px; 
+    cursor: pointer;
+}
+
+.popup-overlay {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
 }
