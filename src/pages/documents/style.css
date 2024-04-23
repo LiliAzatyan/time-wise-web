@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
 }
 
 .daily-tasks-container {
@@ -16,8 +16,8 @@
 
 .tasks-row {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-wrap: wrap; 
+    /* justify-content: space-between; */
     width: 100%;
     margin-top: 30px;
 }

@@ -1,38 +1,49 @@
-import React, { useState } from "react";
-import { FaTrash } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
 import { Button, Modal } from "antd";
+import DocumentCard from '../../components/DocumentsCard'
 import "./style.css";
 
 function Documents() {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: "Task 1",
-      description: "Description for Task 1",
-      dueDate: "2024-04-12",
-      completed: false,
-    },
-    {
-      id: 2,
-      title: "Task 2",
-      description: "Description for Task 2",
-      dueDate: "2024-04-15",
-      completed: false,
-    },
-    {
-      id: 3,
-      title: "Task 3",
-      description: "Description for Task 3",
-      dueDate: "2024-04-16",
-      completed: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState({
     title: "",
     description: "",
     dueDate: "",
     completed: false,
   });
+
+  const [isModalOpen, setIsModalOpen] = useState(false); // Define isModalOpen state
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleOk = () => {
+    setTasks((prevTasks) => [
+      ...prevTasks,
+      { ...newTask, id: prevTasks.length + 1 },
+    ]);
+    setNewTask({
+      title: "",
+      description: "",
+      dueDate: "",
+      completed: false,
+    });
+    setIsModalOpen(false);
+  };
+
+  useEffect(() => {
+    const savedTasks = localStorage.getItem('tasks');
+    if (savedTasks) {
+      setTasks(JSON.parse(savedTasks));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   const handleTaskChange = (taskId) => {
     setTasks((prevTasks) =>
@@ -46,50 +57,12 @@ function Documents() {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
   };
 
-  const handlePriorityChange = (priority) => {
-    console.log("Priority changed to:", priority);
-  };
-
-
-
-
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleOk = () => {
-    setTasks((prevTasks) => [
-      ...prevTasks,
-      { ...newTask, id: tasks.length + 1 },
-    ]);
-    setNewTask({
-      title: "",
-      description: "",
-      dueDate: "",
-      completed: false,
-    });
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <div className="daily-tasks-container">
-      {/* <div className="button-row">
-        <button className="save-button" onClick={handleSave}>
-          Save
-        </button>
-        <button className="cancel-button" onClick={handleCancel}>
-          Cancel
-        </button>
-      </div> */}
       <div className="open-modal">
-
-      <Button type="primary" onClick={showModal} className="open-modal-button">
-        + Add New Plan
-      </Button>
+        <Button type="primary" onClick={showModal} className="open-modal-button">
+          + Add New Plan
+        </Button>
       </div>
       <Modal
         title="Add New Plan"
@@ -119,7 +92,6 @@ function Documents() {
             }
           />
         </div>
-
         <div className="add-task-date">
           <p>Date</p>
           <input
@@ -131,48 +103,20 @@ function Documents() {
             }
           />
         </div>
-
-        <div className="add-task-priority">
-          <p>Priority</p>
-          <div className="priority-options">
-            <input
-              type="checkbox"
-              onChange={() => handlePriorityChange("low")}
-            />
-            <label>Low </label>
-
-            <input
-              type="checkbox"
-              onChange={() => handlePriorityChange("high")}
-            />
-            <label>High</label>
-          </div>
-        </div>
       </Modal>
       <div className="tasks-row">
         {tasks.map((task) => (
-          <div className="task-card" key={task.id}>
-            <h3>{task.title}</h3>
-            <p>{task.description}</p>
-            <div className="due-date">
-              <span>Due Date: {task.dueDate || "Not set"}</span>
-            </div>
-            <div className="completed-checkbox">
-              <input
-                type="checkbox"
-                checked={task.completed}
-                onChange={() => handleTaskChange(task.id)}
-              />
-              <label htmlFor={task.id}>Completed</label>
-            </div>
-            <div className="delete-icon" onClick={() => handleDelete(task.id)}>
-              <FaTrash />
-            </div>
-          </div>
+          <DocumentCard
+            key={task.id}
+            title={task.title}
+            body={task.description}
+            dueDate={task.dueDate}
+            completed={task.completed}
+            handleTaskChange={() => handleTaskChange(task.id)}
+            handleDelete={() => handleDelete(task.id)}
+          />
         ))}
       </div>
-      
-      
     </div>
   );
 }
