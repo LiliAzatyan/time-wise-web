@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.css';
+import Chart from 'chart.js/auto';
 
 const GoalTracking = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -11,6 +12,42 @@ const GoalTracking = () => {
     completionDate: ''
   });
   const [goals, setGoals] = useState([]);
+  const [chartPriority, setChartPriority] = useState(null);
+  const [chartCompletion, setChartCompletion] = useState(null);
+
+  useEffect(() => {
+    updateCharts();
+  }, [goals]);
+
+  const updatePriorityChart = (data) => {
+    if (chartPriority) {
+      chartPriority.data.datasets[0].data = data;
+      chartPriority.update();
+    }
+  };
+
+  const updateCompletionChart = (data) => {
+    if (chartCompletion) {
+      chartCompletion.data.datasets[0].data = data;
+      chartCompletion.update();
+    }
+  };
+
+  const updateCharts = () => {
+    const priorityData = {
+      low: goals.filter(goal => goal.priority === 'low').length,
+      medium: goals.filter(goal => goal.priority === 'medium').length,
+      high: goals.filter(goal => goal.priority === 'high').length
+    };
+
+    const completedData = {
+      completed: goals.filter(goal => !!goal.completionDate).length,
+      notCompleted: goals.filter(goal => !goal.completionDate).length
+    };
+
+    updatePriorityChart([priorityData.low, priorityData.medium, priorityData.high]);
+    updateCompletionChart([completedData.completed, completedData.notCompleted]);
+  };
 
   const togglePopup = () => {
     setIsPopupOpen(!isPopupOpen);
@@ -41,12 +78,75 @@ const GoalTracking = () => {
       startDate: '',
       completionDate: ''
     });
-    togglePopup(); 
+    togglePopup();
   };
 
-  const handleGoalClick = (goal) => {
-    console.log("Goal clicked:", goal);
+  const handleGoalClick = (goalIndex) => {
+    const updatedGoals = [...goals];
+    updatedGoals.splice(goalIndex, 1);
+    setGoals(updatedGoals);
   };
+
+  useEffect(() => {
+    const priorityCtx = document.getElementById('priorityChart');
+    const completionCtx = document.getElementById('completionChart');
+
+    if (priorityCtx && completionCtx && !chartPriority && !chartCompletion) {
+      setChartPriority(new Chart(priorityCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Low', 'Medium', 'High'],
+          datasets: [{
+            label: 'Goals by Priority',
+            data: [0, 0, 0],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.5)',
+              'rgba(54, 162, 235, 0.5)',
+              'rgba(255, 206, 86, 0.5)',
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+            ],
+            borderWidth: 1,
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      }));
+
+      setChartCompletion(new Chart(completionCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Completed', 'Not Completed'],
+          datasets: [{
+            label: 'Goals Completion Status',
+            data: [0, 0],
+            backgroundColor: [
+              'rgba(75, 192, 192, 0.5)',
+              'rgba(255, 99, 132, 0.5)',
+            ],
+            hoverOffset: 4,
+          }]
+        },
+      }));
+    }
+
+    return () => {
+      if (chartPriority) {
+        chartPriority.destroy();
+      }
+      if (chartCompletion) {
+        chartCompletion.destroy();
+      }
+    };
+  }, [chartPriority, chartCompletion]);
 
   return (
     <div className="container">
@@ -148,18 +248,37 @@ const GoalTracking = () => {
         <h2>Your Goals</h2>
         <ul className="goals-list">
           {goals.map((goal, index) => (
-            <li key={index} onClick={() => handleGoalClick(goal)}>
-              <strong>{goal.title}</strong>
-              <p>{goal.description}</p>
-              <p>Priority: {goal.priority}</p>
-              <p>Start Date: {goal.startDate}</p>
-              <p>Completion Date: {goal.completionDate}</p>
+            <li key={index} className="goal-item">
+              <div className="goal-details">
+                <strong>{goal.title}</strong>
+                <p>{goal.description}</p>
+                <p>Priority: {goal.priority}</p>
+                <p>Start Date: {goal.startDate}</p>
+                <p>Completion Date: {goal.completionDate || 'Not Completed'}</p>
+              </div>
+              <button className="delete-btn" onClick={() => handleGoalClick(index)}>Delete</button>
             </li>
           ))}
         </ul>
       </div>
 
-      <div className="section-3">section 3</div>
+      <div className="section-3">
+        <div className="charts-container">
+          <div className="chart">
+            <h3>Goals by Priority</h3>
+            <canvas id="priorityChart" width="200" height="150"></canvas>
+          </div>
+          <div className="side-content">
+            <h3>Motivational Words</h3>
+            <p>Stay focused and keep moving forward!</p>
+            <img src="./goals-pictures/motivation-pictures.png" alt="motivation-picture" /> 
+          </div>
+          <div className="chart">
+            <h3>Goals Completion Status</h3>
+            <canvas id="completionChart" width="200" height="150"></canvas>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
