@@ -149,16 +149,17 @@
 }
 
 .delete-btn {
-  background-color: #f44336;
+  background-color: #f436ae;
   color: white;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
   cursor: pointer;
+  height: 25px;
 }
 
 .delete-btn:hover {
-  background-color: #d32f2f;
+  background-color: #d32fc8;
 }
 
 .section-3 {

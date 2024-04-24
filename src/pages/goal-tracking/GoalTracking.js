@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './style.css';
 import Chart from 'chart.js/auto';
+import './style.css';
+import img from './goals-pictures/motivation-pictures.png';
 
 const GoalTracking = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -271,7 +272,7 @@ const GoalTracking = () => {
           <div className="side-content">
             <h3>Motivational Words</h3>
             <p>Stay focused and keep moving forward!</p>
-            <img src="./goals-pictures/motivation-pictures.png" alt="motivation-picture" /> 
+            <img src={img} alt="motivation-picture" /> 
           </div>
           <div className="chart">
             <h3>Goals Completion Status</h3>
