@@ -10,19 +10,43 @@ const GoalTracking = () => {
     description: '',
     priority: 'medium',
     startDate: '',
-    completionDate: ''
+    completionDate: '',
+    category: 'work',
   });
   const [goals, setGoals] = useState([]);
   const [chartPriority, setChartPriority] = useState(null);
   const [chartCompletion, setChartCompletion] = useState(null);
 
   useEffect(() => {
+    const storedGoals = JSON.parse(localStorage.getItem('goals'));
+    if (storedGoals) {
+      setGoals(storedGoals);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('goals', JSON.stringify(goals));
     updateCharts();
   }, [goals]);
 
   const updatePriorityChart = (data) => {
     if (chartPriority) {
-      chartPriority.data.datasets[0].data = data;
+      chartPriority.data.datasets = data.map((dataset, index) => ({
+        label: `Goals by Priority - ${['Work', 'Learning', 'Life'][index]}`,
+        data: dataset,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.5)',
+          'rgba(54, 162, 235, 0.5)',
+          'rgba(255, 206, 86, 0.5)',
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+        ],
+        borderWidth: 1,
+      }));
+
       chartPriority.update();
     }
   };
@@ -36,9 +60,9 @@ const GoalTracking = () => {
 
   const updateCharts = () => {
     const priorityData = {
-      low: goals.filter(goal => goal.priority === 'low').length,
-      medium: goals.filter(goal => goal.priority === 'medium').length,
-      high: goals.filter(goal => goal.priority === 'high').length
+      low: { work: 0, learning: 0, life: 0 },
+      medium: { work: 0, learning: 0, life: 0 },
+      high: { work: 0, learning: 0, life: 0 },
     };
 
     const completedData = {
@@ -46,7 +70,28 @@ const GoalTracking = () => {
       notCompleted: goals.filter(goal => !goal.completionDate).length
     };
 
-    updatePriorityChart([priorityData.low, priorityData.medium, priorityData.high]);
+    goals.forEach((goal) => {
+      priorityData[goal.priority][goal.category]++;
+    });
+
+    updatePriorityChart([
+      [
+        priorityData.low.work,
+        priorityData.medium.work,
+        priorityData.high.work,
+      ],
+      [
+        priorityData.low.learning,
+        priorityData.medium.learning,
+        priorityData.high.learning,
+      ],
+      [
+        priorityData.low.life,
+        priorityData.medium.life,
+        priorityData.high.life,
+      ],
+    ]);
+
     updateCompletionChart([completedData.completed, completedData.notCompleted]);
   };
 
@@ -71,14 +116,17 @@ const GoalTracking = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    setGoals([...goals, goalData]);
+    const updatedGoals = [...goals, goalData];
+    setGoals(updatedGoals);
     setGoalData({
       title: '',
       description: '',
       priority: 'medium',
       startDate: '',
-      completionDate: ''
+      completionDate: '',
+      category: 'work',
     });
+    localStorage.setItem('goals', JSON.stringify(updatedGoals)); // Save to local storage
     togglePopup();
   };
 
@@ -86,6 +134,7 @@ const GoalTracking = () => {
     const updatedGoals = [...goals];
     updatedGoals.splice(goalIndex, 1);
     setGoals(updatedGoals);
+    localStorage.setItem('goals', JSON.stringify(updatedGoals)); // Update local storage
   };
 
   useEffect(() => {
@@ -97,21 +146,7 @@ const GoalTracking = () => {
         type: 'bar',
         data: {
           labels: ['Low', 'Medium', 'High'],
-          datasets: [{
-            label: 'Goals by Priority',
-            data: [0, 0, 0],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.5)',
-              'rgba(54, 162, 235, 0.5)',
-              'rgba(255, 206, 86, 0.5)',
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-            ],
-            borderWidth: 1,
-          }]
+          datasets: [],
         },
         options: {
           scales: {
@@ -134,7 +169,7 @@ const GoalTracking = () => {
               'rgba(255, 99, 132, 0.5)',
             ],
             hoverOffset: 4,
-          }]
+          }],
         },
       }));
     }
@@ -150,7 +185,7 @@ const GoalTracking = () => {
   }, [chartPriority, chartCompletion]);
 
   return (
-    <div className="container">
+    <div className="container" style={{ backgroundImage: `url(${img})` }}>
       <div className='section-1'>
         <div className='welcome-box'>
           <p className='name-section'>Hi, Lily 👋</p>
@@ -219,6 +254,20 @@ const GoalTracking = () => {
                   </label>
                 </div>
 
+                <div className="category-section">
+                  <p>Select Category:</p>
+                  <select
+                    name="category"
+                    value={goalData.category}
+                    onChange={handleInputChange}
+                    required
+                  >
+                    <option value="work">Work</option>
+                    <option value="learning">Learning</option>
+                    <option value="life">Life</option>
+                  </select>
+                </div>
+
                 <div className="date-section">
                   <label>Start Date:</label>
                   <input
@@ -254,6 +303,7 @@ const GoalTracking = () => {
                 <strong>{goal.title}</strong>
                 <p>{goal.description}</p>
                 <p>Priority: {goal.priority}</p>
+                <p>Category: {goal.category}</p>
                 <p>Start Date: {goal.startDate}</p>
                 <p>Completion Date: {goal.completionDate || 'Not Completed'}</p>
               </div>
@@ -272,7 +322,7 @@ const GoalTracking = () => {
           <div className="side-content">
             <h3>Motivational Words</h3>
             <p>Stay focused and keep moving forward!</p>
-            <img src={img} alt="motivation-picture" /> 
+            <img src={img} alt="motivation-picture" />
           </div>
           <div className="chart">
             <h3>Goals Completion Status</h3>
