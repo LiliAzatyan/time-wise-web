@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Modal } from "antd";
 
-function DocumentCard({
-  title,
-  body,
-  dueDate,
-  completed,
-  handleTaskChange,
-  handleDelete,
-}) {
+function DocumentCard({ document }) {
+  const {
+    title,
+    description,
+    dueDate,
+    completed,
+    handleTaskChange,
+    handleDelete,
+  } = document;
   const [expanded, setExpanded] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -80,7 +81,7 @@ function DocumentCard({
         </div>
         <hr style={lineStyle} />
         <div style={bodyStyle}>
-          <p>{body}</p>
+          <p>{description}</p>
         </div>
         <div
           style={deleteStyle}
@@ -98,16 +99,18 @@ function DocumentCard({
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <p>{body}</p>
+        <p>{description}</p>
         <p>{dueDate}</p>
         <div style={{ marginBottom: "10px" }}>
+          
           <input
             type="checkbox"
             id="completedCheckbox"
             checked={completed}
-            onChange={handleTaskChange}
+            onChange={() => handleTaskChange(document.id)} // Pass document.id as an argument
             style={{ display: "none" }}
           />
+
           <label
             htmlFor="completedCheckbox"
             style={{
@@ -131,7 +134,7 @@ function DocumentCard({
                 fontSize: "20px",
               }}
             >
-              &#10003;
+              {completed ? "✓" : ""}
             </span>
           </label>
           <span style={{ verticalAlign: "middle" }}>Completed</span>

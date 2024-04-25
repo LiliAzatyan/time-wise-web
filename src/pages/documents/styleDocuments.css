@@ -63,7 +63,7 @@
 
 .add-task-title {
     margin-top: 20px;
-    display: flex;
+    display: flex; 
     flex-direction: column;
     align-items: flex-start;
     padding-left: 25px;
