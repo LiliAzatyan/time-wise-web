@@ -119,10 +119,17 @@
 }
 
 .goals-list {
+  display: inline-block;
+  white-space: nowrap;
   display: flex;
   gap: 15px;
   list-style-type: none;
   margin: 10px;
+}
+
+.goals-container {
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .goal-item {
