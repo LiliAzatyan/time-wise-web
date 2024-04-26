@@ -49,11 +49,11 @@ const App = () => {
     setTimeout(() => setIsClicked(false), 1000);
   };
   return (
-    <div>
+    <div style={{backgroundColor: "#FCFCFC"}}>
       <div style={{height: '63px', marginTop: '0px'}}>
         
        <a href="/home" onClick={handleClick}>
-              <button style={{backgroundColor: "white"}}
+              <button style={{backgroundColor: "#FCFCFC"}}
                 className={`button ${isClicked ? "true" : "false"}`}
                 onClick={handleClick}
               >

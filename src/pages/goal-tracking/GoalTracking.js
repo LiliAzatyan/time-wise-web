@@ -293,25 +293,7 @@ const GoalTracking = () => {
           </div>
         </div>
       )}
-{/* 
-      <div className="section-2">
-        <h2>Your Goals</h2>
-        <ul className="goals-list">
-          {goals.map((goal, index) => (
-            <li key={index} className="goal-item">
-              <div className="goal-details">
-                <strong>{goal.title}</strong>
-                <p>{goal.description}</p>
-                <p>Priority: {goal.priority}</p>
-                <p>Category: {goal.category}</p>
-                <p>Start Date: {goal.startDate}</p>
-                <p>Completion Date: {goal.completionDate || 'Not Completed'}</p>
-              </div>
-              <button className="delete-btn" onClick={() => handleGoalClick(index)}>Delete</button>
-            </li>
-          ))}
-        </ul>
-      </div> */}
+{/* {} */}
 
 <div className="section-2">
   <h2>Your Goals</h2>

@@ -22,32 +22,32 @@ function Home() {
 
   const showLoginModal = () => {
     setIsLoginModalOpen(true);
-    setIsBackgroundBlurred(true); // Apply blur effect to the background
+    setIsBackgroundBlurred(true); 
   };
 
   const showRegistrationModal = () => {
     setIsRegistrationModalOpen(true);
-    setIsBackgroundBlurred(true); // Apply blur effect to the background
+    setIsBackgroundBlurred(true); 
   };
 
   const handleLoginOk = () => {
     setIsLoginModalOpen(false);
-    setIsBackgroundBlurred(false); // Remove blur effect from the background
+    setIsBackgroundBlurred(false); 
   };
 
   const handleLoginCancel = () => {
     setIsLoginModalOpen(false);
-    setIsBackgroundBlurred(false); // Remove blur effect from the background
+    setIsBackgroundBlurred(false); 
   };
 
   const handleRegistrationOk = () => {
     setIsRegistrationModalOpen(false);
-    setIsBackgroundBlurred(false); // Remove blur effect from the background
+    setIsBackgroundBlurred(false); 
   };
 
   const handleRegistrationCancel = () => {
     setIsRegistrationModalOpen(false);
-    setIsBackgroundBlurred(false); // Remove blur effect from the background
+    setIsBackgroundBlurred(false);
   };
 
   return (
