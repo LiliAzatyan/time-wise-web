@@ -9,8 +9,14 @@
 }
 
 .welcome-box {
+  font-size: 20px;
   display: block;
   text-align: start;
+}
+
+.name-section {
+  display: flex;
+  justify-content: start;
 }
 
 .input-btn-container {

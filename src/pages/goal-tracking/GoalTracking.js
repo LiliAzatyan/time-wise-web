@@ -126,7 +126,7 @@ const GoalTracking = () => {
       completionDate: '',
       category: 'work',
     });
-    localStorage.setItem('goals', JSON.stringify(updatedGoals)); // Save to local storage
+    localStorage.setItem('goals', JSON.stringify(updatedGoals)); 
     togglePopup();
   };
 
@@ -134,7 +134,7 @@ const GoalTracking = () => {
     const updatedGoals = [...goals];
     updatedGoals.splice(goalIndex, 1);
     setGoals(updatedGoals);
-    localStorage.setItem('goals', JSON.stringify(updatedGoals)); // Update local storage
+    localStorage.setItem('goals', JSON.stringify(updatedGoals));
   };
 
   useEffect(() => {
@@ -323,10 +323,11 @@ const GoalTracking = () => {
             <h3>Goals by Priority</h3>
             <canvas id="priorityChart" width="200" height="150"></canvas>
           </div>
-          <div className="side-content">
+          <div className="side-content" style={{ maxWidth: "100%" }}>
             <h3>Motivational Words</h3>
             <p>Stay focused and keep moving forward!</p>
-            <img src={img} alt="motivation-picture" />
+            <img src={img} alt="motivation-picture" style={{ maxWidth: "100%", height: "auto" }} />
+            {/* <img src={img} alt="motivation-picture" style={{width: "400px", height: "400px"}}/> */}
           </div>
           <div className="chart">
             <h3>Goals Completion Status</h3>
