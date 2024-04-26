@@ -14,6 +14,17 @@
   text-align: start;
 }
 
+.Goal-list-title {
+  font-size: 30px;
+  color: #ED9F29;
+  transition: all 0.3s ease; 
+}
+
+.Goal-list-title:hover {
+  transform: scale(1.1); 
+  font-weight: bold; 
+}
+
 .name-section {
   display: flex;
   justify-content: start;

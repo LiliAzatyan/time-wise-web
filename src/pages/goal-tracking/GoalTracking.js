@@ -296,7 +296,7 @@ const GoalTracking = () => {
 {/* {} */}
 
 <div className="section-2">
-  <h2>Your Goals</h2>
+  <h2 className='Goal-list-title'>Your Goals</h2>
   <div className="goals-container">
     <ul className="goals-list">
       {goals.map((goal, index) => (
