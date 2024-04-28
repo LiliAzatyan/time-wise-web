@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaTrash, FaEye } from "react-icons/fa";
+import { FaTrash, FaEye, FaCheckCircle } from "react-icons/fa";
 
 function TaskList({ tasks, handleTaskChange, handleDelete }) {
   const [selectedTask, setSelectedTask] = useState(null);
@@ -26,7 +26,10 @@ function TaskList({ tasks, handleTaskChange, handleDelete }) {
     });
   };
 
-
+  const handleCardClick = (taskId) => {
+    toggleTaskCompletion(taskId);
+    handleTaskChange(taskId);
+  };
 
   return (
     <div className="tasks-container" style={styles.container}>
@@ -36,34 +39,29 @@ function TaskList({ tasks, handleTaskChange, handleDelete }) {
           key={task.id}
           style={{
             ...styles.taskCard,
+            borderBottom: 'solid 3px #7BD6D4',
             backgroundColor:
               completedTasks.includes(task.id) ? "#EAEAEA" : index % 2 === 0 ? "#F2FBFB" : "#F7F7F7",
             textDecoration: completedTasks.includes(task.id) ? "line-through" : "none",
           }}
+          onClick={() => handleCardClick(task.id)}
         >
-          <input
-            type="checkbox"
-            checked={completedTasks.includes(task.id)}
-            onChange={() => {
-              handleTaskChange(task.id);
-              toggleTaskCompletion(task.id);
-            }}
-            style={styles.checkbox}
-          />
+          <div className="task-icon" style={styles.taskIcon}>
+            {completedTasks.includes(task.id) && <FaCheckCircle color="#7BD6D4" />}
+          </div>
           <div className="task-details" style={styles.taskDetails}>
-            <h3>{task.title}</h3>
-            {/* <p>{task.description}</p> */}
+            <h3 style={styles.taskTitle}>{task.title}</h3>
           </div>
           <div className="metadata" style={styles.metadata}>
             <div className="due-date" style={styles.dueDate}>
               <span>
                 {task.dueDate === new Date().toISOString().split("T")[0]
                   ? "Today"
-                  : task.dueDate || "Due Date Placeholder"}
+                  : task.dueDate}
               </span>
             </div>
             <div className="priority" style={styles.priority}>
-              <span>{task.priority || "Priority Placeholder"}</span>
+              <span>{task.priority}</span>
             </div>
             <div className="view-button" style={styles.viewButton}>
               <button
@@ -78,7 +76,7 @@ function TaskList({ tasks, handleTaskChange, handleDelete }) {
               onClick={() => handleDelete(task.id)}
               style={styles.deleteIcon}
             >
-              <FaTrash />
+              <FaTrash color="#517373" />
             </div>
           </div>
         </div>
@@ -94,19 +92,18 @@ function TaskList({ tasks, handleTaskChange, handleDelete }) {
               &times;
             </span>
             <h2 style={styles.header}>{selectedTask.title}</h2>
-            {/* <p style={styles.taskDetail}>{selectedTask.title}</p> */}
             <p style={styles.taskDetail}>
               {selectedTask.description}
             </p>
             <p style={styles.taskDetail}>{selectedTask.dueDate}</p>
             <p style={styles.taskDetail}>{selectedTask.priority}</p>
-            {/* Add more task details here */}
           </div>
         </div>
       )}
     </div>
   );
 }
+
 const styles = {
   container: {
     width: "102vh",
@@ -126,8 +123,9 @@ const styles = {
     marginBottom: "20px",
     marginRight: "1000px"
   },
-  checkbox: {
+  taskIcon: {
     marginRight: "20px",
+    fontSize: "24px",
   },
   taskDetails: {
     flex: "1",
@@ -153,6 +151,8 @@ const styles = {
     borderRadius: "5px",
     marginRight: "20px",
     cursor: "pointer",
+    padding: "10px 20px",
+    fontSize: "16px",
   },
   deleteIcon: {
     cursor: "pointer",
@@ -197,14 +197,10 @@ const styles = {
     marginBottom: "10px",
     lineHeight: "1.5",
   },
-  close: {
-    color: "#aaa",
-    position: "absolute",
-    top: "10px",
-    right: "10px",
-    // fontSize: "80px",
-    fontWeight: "bold",
-    cursor: "pointer",
+  taskTitle: {
+    fontFamily: "Arial, sans-serif", // Custom font family
+    fontSize: "1.2rem", // Custom font size
+    color: "#333", // Custom font color
   },
 };
 

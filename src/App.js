@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginRegister from "./pages/login-and-register/index"
 import GoalTracking from './pages/goal-tracking/GoalTracking';
 import MyPlanner from './pages/my-planner/MyPlanner'; 
