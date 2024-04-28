@@ -126,7 +126,7 @@ const GoalTracking = () => {
       completionDate: '',
       category: 'work',
     });
-    localStorage.setItem('goals', JSON.stringify(updatedGoals)); // Save to local storage
+    localStorage.setItem('goals', JSON.stringify(updatedGoals)); 
     togglePopup();
   };
 
@@ -134,7 +134,7 @@ const GoalTracking = () => {
     const updatedGoals = [...goals];
     updatedGoals.splice(goalIndex, 1);
     setGoals(updatedGoals);
-    localStorage.setItem('goals', JSON.stringify(updatedGoals)); // Update local storage
+    localStorage.setItem('goals', JSON.stringify(updatedGoals));
   };
 
   useEffect(() => {
@@ -293,28 +293,10 @@ const GoalTracking = () => {
           </div>
         </div>
       )}
-{/* 
-      <div className="section-2">
-        <h2>Your Goals</h2>
-        <ul className="goals-list">
-          {goals.map((goal, index) => (
-            <li key={index} className="goal-item">
-              <div className="goal-details">
-                <strong>{goal.title}</strong>
-                <p>{goal.description}</p>
-                <p>Priority: {goal.priority}</p>
-                <p>Category: {goal.category}</p>
-                <p>Start Date: {goal.startDate}</p>
-                <p>Completion Date: {goal.completionDate || 'Not Completed'}</p>
-              </div>
-              <button className="delete-btn" onClick={() => handleGoalClick(index)}>Delete</button>
-            </li>
-          ))}
-        </ul>
-      </div> */}
+{/* {} */}
 
 <div className="section-2">
-  <h2>Your Goals</h2>
+  <h2 className='Goal-list-title'>Your Goals</h2>
   <div className="goals-container">
     <ul className="goals-list">
       {goals.map((goal, index) => (
@@ -341,10 +323,11 @@ const GoalTracking = () => {
             <h3>Goals by Priority</h3>
             <canvas id="priorityChart" width="200" height="150"></canvas>
           </div>
-          <div className="side-content">
+          <div className="side-content" style={{ maxWidth: "100%" }}>
             <h3>Motivational Words</h3>
             <p>Stay focused and keep moving forward!</p>
-            <img src={img} alt="motivation-picture" />
+            <img src={img} alt="motivation-picture" style={{ maxWidth: "100%", height: "auto" }} />
+            {/* <img src={img} alt="motivation-picture" style={{width: "400px", height: "400px"}}/> */}
           </div>
           <div className="chart">
             <h3>Goals Completion Status</h3>

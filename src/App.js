@@ -17,7 +17,7 @@ const headerStyle = {
   color: '#fff',
   paddingInline: 48,
   lineHeight: '64px',
-  backgroundColor: '#fff',
+  backgroundColor: '#6BC6C4',
   borderBottom: 'solid 1px',
   borderColor: '#999'
 };
@@ -40,7 +40,6 @@ const layoutStyle = {
 };
 const App = () => (
   <div style={{padding: "0px", margin: "0px"}}>
-
   <Flex gap="middle" wrap="wrap">
     <BrowserRouter>
       <Routes>

@@ -7,7 +7,7 @@ const { Search } = Input;
 
 const App = () => {
   const [open, setOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false); // State to track dark mode
+  const [darkMode, setDarkMode] = useState(false); 
 
   const showDrawer = () => {
     setOpen(true);
@@ -40,7 +40,7 @@ const App = () => {
 
   return (
     <div className={darkMode ? 'dark-mode' : ''}> {/* Apply dark mode class */}
-      <Header style={{ backgroundColor: '#fff', padding: '0 24px', display: 'flex', alignItems: 'center', borderBottom: "solid 1px", borderColor: '#999' }}>
+      <Header style={{ backgroundColor: '#6BC6C4', padding: '0 24px', display: 'flex', alignItems: 'center', borderBottom: "solid 1px", borderColor: '#6BC6C4' }}>
         <Space style={{ flexGrow: 1, marginTop: 30 }}>
           <Search placeholder="Search..." onSearch={onSearch} style={{ width: 200 }} />
         </Space>

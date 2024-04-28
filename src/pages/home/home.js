@@ -1,251 +1,117 @@
 import React, { useState } from "react";
 import { Link } from "react-scroll";
+import { Modal } from "antd";
 import "./home.css";
-import { Button, Modal } from "antd";
 import Login from "../login-and-register/login/index";
 import Registration from "../login-and-register/register/index";
-
-import image from "./Photos/image.jpg";
-import image1 from "./Photos/image1.png";
-import image2 from "./Photos/image2.png";
-
 function Home() {
-  const [isClicked, setIsClicked] = useState(false);
-  const handleClick = () => {
-    setIsClicked(true);
-    setTimeout(() => setIsClicked(false), 1000);
-  };
+    const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showRegistrationModal, setShowRegistrationModal] = useState(false);
 
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
-  const [isBackgroundBlurred, setIsBackgroundBlurred] = useState(false);
+    const handleLoginModal = () => {
+        setShowLoginModal(!showLoginModal);
+    };
 
-  const showLoginModal = () => {
-    setIsLoginModalOpen(true);
-    setIsBackgroundBlurred(true); // Apply blur effect to the background
-  };
+    const handleRegistrationModal = () => {
+        setShowRegistrationModal(!showRegistrationModal);
+    };
 
-  const showRegistrationModal = () => {
-    setIsRegistrationModalOpen(true);
-    setIsBackgroundBlurred(true); // Apply blur effect to the background
-  };
+    return (
+        <div>
+            <Link activeClass="active" to="section1" spy={true} smooth={true} offset={-70} duration={500}></Link>
+            <Link activeClass="active" to="section2" spy={true} smooth={true} offset={-70} duration={500}></Link>
+            <Link activeClass="active" to="section3" spy={true} smooth={true} offset={-70} duration={500}></Link>
+            <Link activeClass="active" to="section4" spy={true} smooth={true} offset={-70} duration={500}></Link>
+            <Link activeClass="active" to="section5" spy={true} smooth={true} offset={-70} duration={200}></Link>
 
-  const handleLoginOk = () => {
-    setIsLoginModalOpen(false);
-    setIsBackgroundBlurred(false); // Remove blur effect from the background
-  };
+            <div id="section1" className="section section1"
+                 style={{backgroundColor: "#7BD6D4", color: "white", textAlign: "center", position: "relative"}}>
+                <div className="text-container"
+                     style={{position: "absolute", top: "20%", left: "50%", transform: "translate(-50%, -50%)"}}>
+                    <h1 style={{color: "#7BD6D4", fontSize: "100px", fontFamily: 'Lucida Grande'}}>TimeWise</h1>
+                    <p style={{fontSize: "25px"}}>Your Future Depends On What You Do Today</p>
+                    <div className="login_reg">
+                        <button className="button sign-up" style={{margin: '10px'}}
+                                onClick={handleRegistrationModal}>Sign Up
+                        </button>
+                        <button className="button sign-in" style={{margin: '10px'}} onClick={handleLoginModal}>Sign In
+                        </button>
+                    </div>
+                    <div className="platform">
+                        <div className="app-store">
+                            <img src="app-store-icon.png" alt="App Store"/>
+                        </div>
+                        <div className="google-market">
+                            <img src="google-market-icon.png" alt="Google Market"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-  const handleLoginCancel = () => {
-    setIsLoginModalOpen(false);
-    setIsBackgroundBlurred(false); // Remove blur effect from the background
-  };
 
-  const handleRegistrationOk = () => {
-    setIsRegistrationModalOpen(false);
-    setIsBackgroundBlurred(false); // Remove blur effect from the background
-  };
+            <Modal title="Login" visible={showLoginModal} onCancel={handleLoginModal} footer={null}><Login/></Modal>
 
-  const handleRegistrationCancel = () => {
-    setIsRegistrationModalOpen(false);
-    setIsBackgroundBlurred(false); // Remove blur effect from the background
-  };
 
-  return (
-    <div className={`blur-container ${isBackgroundBlurred ? 'blur-background' : ''}`}>
-      <div className="header">
-        <h1 className="typing-demo">
-          Organize your life with our Time Wise app
-        </h1>
-        <Button type="default" onClick={showLoginModal}>
-          Sign in
-        </Button>
+            <Modal title="Registration" visible={showRegistrationModal} onCancel={handleRegistrationModal}
+                   footer={null}><Registration/></Modal>
 
-        <Button type="default" onClick={showRegistrationModal}>
-          Sign up
-        </Button>
+            <div id="section2" className="section" style={{backgroundColor: "rgba(123, 214, 212, 0.15)"}}>
+                <div className="text">
+                    <h2 className="common-heading">My Planner</h2>
+                    <p className="common-text">
+                        ALorem ipsum dolor sit amet consectetur. Quis tortor gravida nibh arcu id purus ullaxcorper. Vel
+                        vel erat semper augue.Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet
+                        consectetur. Quis tortor gravida nibh arcu id purus ullaxcorper. Vel vel erat semper augue.Lorem
+                        ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Quis tortor gravida
+                        nibh arcu id purus ullaxcorper. Vel vel erat semper augue.Lorem ipsum dolor sit amet
+                        consectetur. Lorem ipsum dolor sit amet consectetur. Quis tortor gravida nibh arcu id purus
+                        ullaxcorper.
+                    </p>
+                </div>
+                <div className="images">
+                    <img src="image1.png" alt="my planner"/>
+                </div>
+            </div>
+            <div className="section3_header section" style={{backgroundColor: "rgba(123, 214, 212, 0.15)"}}>
 
-        {isLoginModalOpen && (
-          <div className="modal-container">
-            <Modal
-              title="Login"
-              visible={isLoginModalOpen}
-              onOk={handleLoginOk}
-              onCancel={handleLoginCancel}
-              style={{ width: "100%" }}
-              footer={null}
-            >
-              <Login />
-            </Modal>
-          </div>
-        )}
+                <div className="image">
+                    <img src="image2.png" alt="aa"/>
+                </div>
 
-        {isRegistrationModalOpen && (
-          <div className="modal-container">
-            <Modal
-              title="Registration"
-              visible={isRegistrationModalOpen}
-              onOk={handleRegistrationOk}
-              onCancel={handleRegistrationCancel}
-              style={{ width: "100%" }}
-              footer={null}
-            >
-              <Registration />
-            </Modal>
-          </div>
-        )}
-      </div>
-      <Link
-        activeClass="active"
-        to="section1"
-        spy={true}
-        smooth={true}
-        offset={-70}
-        duration={500}
-      ></Link>
-      <Link
-        activeClass="active"
-        to="section2"
-        spy={true}
-        smooth={true}
-        offset={-70}
-        duration={500}
-      ></Link>
-      <Link
-        activeClass="active"
-        to="section3"
-        spy={true}
-        smooth={true}
-        offset={-70}
-        duration={500}
-      ></Link>
-      <Link
-        activeClass="active"
-        to="section4"
-        spy={true}
-        smooth={true}
-        offset={-70}
-        duration={500}
-      ></Link>
-      <div id="section1" className="section">
-        <div className="row">
-          <div className="text">
-            <h2>Time Wise: Organize work schedules with ease</h2>
-            <p>
-              Time Wise is a user-friendly app for organizing work schedules,
-              meetings, tasks, and documents efficiently.
-            </p>
+                <div className="text">
+                    <h2 className="common-heading">My Goals</h2>
+                    <p className="common-text">
+                        Lorem ipsum dolor sit amet consectetur. Quis tortor gravida nibh arcu id purus ullaxcorper. Vel
+                        vel erat semper augue.Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet
+                        consectetur. Quis tortor gravida nibh arcu id purus ullaxcorper. Vel vel erat semper augue.Lorem
+                        ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.
+                    </p>
+                </div>
+            </div>
 
-            <a href="/my-planner" onClick={handleClick}>
-              <button
-                className={`button ${isClicked ? "bubble" : ""}`}
-                onClick={handleClick}
-              >
-                Start Planning Now
-              </button>
-            </a>
-          </div>
-          <div className="images">
-            <img src={image} alt="Image" />
-          </div>
+
+            <div id="section4" className="section" style={{backgroundColor: "rgba(123, 214, 212, 0.15)"}}>
+                <div className="text">
+                    <h2 className="common-heading">My Notes</h2>
+                    <p className="common-text">
+                        ALorem ipsum dolor sit amet consectetur. Quis tortor gravida nibh arcu id purus ullaxcorper. Vel
+                        vel erat semper augue.Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet
+                        consectetur. Quis tortor gravida nibh arcu id purus ullaxcorper. Vel vel erat semper augue.Lorem
+                        ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Quis tortor gravida
+                        nibh arcu id purus ullaxcorper. Vel vel erat semper augue.Lorem ipsum dolor sit amet
+                        consectetur. Lorem ipsum dolor sit amet consectetur. Quis tortor gravida nibh arcu id purus
+                        ullaxcorper.
+                    </p>
+                </div>
+                <div className="images">
+                    <img src="image3.png" alt="My goals"/>
+                </div>
+            </div>
+            <div id="section5" className="section section5" style={{textAlign: "center", backgroundColor: "#fff"}}>
+                <p className="animated-marker">"TimeWise makes it easy to go as simple or as complex as you want"</p>
+            </div>
         </div>
-      </div>
-      <div
-        id="section2"
-        className="section"
-        style={{ backgroundColor: "lightgray" }}
-      >
-        <div className="row">
-          <div className="images">
-            <img src={image1} alt="Image" />
-          </div>
-          <div className="text">
-            <h2>
-              Time Wise offers seamless task and document management with
-              calendar integration
-            </h2>
-            <p>
-              Stay organized with Time Wise's user-friendly interface, task
-              management, and calendar integration for efficient work
-              scheduling.
-            </p>
-
-            <a href="/documents" onClick={handleClick}>
-              <button
-                className={`button ${isClicked ? "bubble" : ""}`}
-                onClick={handleClick}
-              >
-                Start organizing now
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div
-        id="section3"
-        className="section"
-        style={{ backgroundColor: "white" }}
-      >
-        <div className="section3_header">
-          <div className="text">
-            <h2>Efficient task management</h2>
-          </div>
-        </div>
-        <div className="row">
-          <div className="text">
-            <h2>
-              Boost productivity with Time Wise's task management and calendar
-              integration.
-            </h2>
-            <p>
-              Time Wise enhances work efficiency with task management and
-              calendar integration, ensuring a seamless workflow.
-            </p>
-            <a href="/documents" onClick={handleClick}>
-              <button
-                className={`button ${isClicked ? "bubble" : ""}`}
-                onClick={handleClick}
-              >
-                Discover more features
-              </button>
-            </a>
-          </div>
-          <div className="images">
-            <img src={image2} alt="Image 2" />
-          </div>
-        </div>
-      </div>
-
-      <div
-        id="section4"
-        className="section"
-        style={{ backgroundColor: "lightgray" }}
-      >
-        <div className="section4_header">
-          <div className="text">
-            <h2>Organize your goals</h2>
-          </div>
-        </div>
-        <div className="row">
-          <div className="text">
-            <h2>
-              Time Wise offers seamless task and document management with
-              calendar integration.
-            </h2>
-          </div>
-          <div className="text">
-            <a href="/goal-tracking" onClick={handleClick}>
-              <button
-                className={`add-goals-button ${isClicked ? "bubble" : ""}`}
-                onClick={handleClick}
-              >
-                Add your goals
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default Home;

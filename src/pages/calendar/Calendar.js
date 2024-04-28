@@ -12,6 +12,7 @@ const TimePlanner = () => {
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedDate, setSelectedDate] = useState(null);
 
+
     const handleDateClick = (date) => {
         setSelectedDate(date);
         setModalOpen(true);
@@ -20,7 +21,6 @@ const TimePlanner = () => {
     const closeModal = () => {
         setModalOpen(false);
     };
-
     const handleEventClick = (event) => {
         setSelectedDate(event.start);
         setModalOpen(true);
@@ -79,4 +79,3 @@ const TimePlanner = () => {
 }
 
 export default memo(TimePlanner);
-
