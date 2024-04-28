@@ -28,6 +28,7 @@ function DocumentCard({ document }) {
       : "0px 0px 10px 0px rgba(0, 0, 0, 0.1)",
     opacity: completed ? "0.5" : "1",
   };
+  
 
   const headerStyle = {
     textAlign: "center",

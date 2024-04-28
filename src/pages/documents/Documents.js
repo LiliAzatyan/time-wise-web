@@ -145,9 +145,9 @@ function Documents() {
 
   return (
     <div style={{ display: "flex" }}>
-      <LeftComponent documents={documents} handleTaskChange={handleTaskChange} />
+      {/* <LeftComponent documents={documents} handleTaskChange={handleTaskChange} />
 
-      <RightComponent onSave={handleSave} />
+      <RightComponent onSave={handleSave} /> */}
     </div>
   );
 }

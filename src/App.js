@@ -24,7 +24,7 @@ const headerStyle = {
 const contentStyle = {
   textAlign: 'center',
   color: '#000',
-  backgroundColor: '#F8FFFF',
+  backgroundColor: '#FFFFFF',
 };
 const siderStyle = {
   textAlign: 'center',
