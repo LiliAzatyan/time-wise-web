@@ -64,9 +64,9 @@ const App = () => {
   return (
     <div style={{backgroundColor: "#FCFCFC"}}>
       <div style={{height: '63px', marginTop: '0px', backgroundColor: "#7BD6D4"}}>
-         sidebar
+         
         <a href="/home" onClick={handleClick}>
-          <button style={{backgroundColor: "#FCFCFC"}}
+          <button 
             className={`button ${isClicked ? "true" : "false"}`}
             onClick={handleClick}
           >
@@ -75,16 +75,16 @@ const App = () => {
         </a>
 
 
-       <a href="/home" onClick={handleClick}>
+       {/* <a href="/home" onClick={handleClick}>
               <button
                 className={`button ${isClicked ? "true" : "false"}`}
                 onClick={handleClick}
               >
                 <img src="./TimeWise2.png" alt="Logo" width="100%"/>
               </button>
-      </a>
+      </a> */}
 
-      dev
+      
       </div>
       <div style={{height: '100vh', marginTop: "40px"}}>
         {items.map(item => (
