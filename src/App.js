@@ -17,7 +17,7 @@ const headerStyle = {
   color: '#fff',
   paddingInline: 48,
   lineHeight: '64px',
-  backgroundColor: '#6BC6C4',
+  backgroundColor: '#7BD6D4',
   borderBottom: 'solid 1px',
   borderColor: '#999'
 };

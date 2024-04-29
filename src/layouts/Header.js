@@ -40,7 +40,7 @@ const App = () => {
 
   return (
     <div className={darkMode ? 'dark-mode' : ''}> {/* Apply dark mode class */}
-      <Header style={{ backgroundColor: '#6BC6C4', padding: '0 24px', display: 'flex', alignItems: 'center', borderBottom: "solid 1px", borderColor: '#6BC6C4' }}>
+      <Header style={{ backgroundColor: '#7BD6D4', padding: '0 24px', display: 'flex', alignItems: 'center' }}>
         <Space style={{ flexGrow: 1, marginTop: 30 }}>
           <Search placeholder="Search..." onSearch={onSearch} style={{ width: 200 }} />
         </Space>

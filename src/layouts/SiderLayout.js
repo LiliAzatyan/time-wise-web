@@ -50,7 +50,7 @@ const App = () => {
   };
   return (
     <div style={{backgroundColor: "#FCFCFC"}}>
-      <div style={{height: '63px', marginTop: '0px'}}>
+      <div style={{height: '63px', marginTop: '0px', backgroundColor: "#7BD6D4"}}>
         
        <a href="/home" onClick={handleClick}>
               <button style={{backgroundColor: "#FCFCFC"}}
@@ -68,7 +68,7 @@ const App = () => {
             <Link to={item.link} style={{ textDecoration: 'none' }}>
               <button 
                 onClick={() => onClick(item.key)}
-                style={{ padding: '10px 20px', fontSize: '16px', backgroundColor: current === item.key ? '#007bff' : '#fff', color: current === item.key ? '#fff' : '#000', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
+                style={{ padding: '10px 20px', fontSize: '16px', backgroundColor: current === item.key ? '#7BD6D4' : '#fff', color: current === item.key ? '#fff' : '#000', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
               >
                 {item.icon}
                 <span style={{ marginLeft: '8px' }}>{item.label}</span>

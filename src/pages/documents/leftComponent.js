@@ -6,6 +6,7 @@ function LeftComponent({ documents, handleTaskChange }) {
     
   console.log(handleTaskChange);
   const containerStyle = {
+    scrollbarWidth: "none",
     marginRight: "20px",
     height: "90vh", // Set the height of the scrollable area
     overflowY: "scroll", // Allow vertical scrolling
