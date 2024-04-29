@@ -9,7 +9,7 @@ const localizer = momentLocalizer(moment);
 
 const TimePlanner = () => {
     const [tasks, setTasks] = useState([]);
-    const [selectedDate, setSelectedDate] = useState(moment()); // Initialize with current date
+    const [selectedDate, setSelectedDate] = useState(moment());
 
     const handleDateChange = date => {
         setSelectedDate(moment(date));
