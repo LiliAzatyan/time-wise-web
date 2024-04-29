@@ -44,8 +44,8 @@ const App = () => (
   <Flex gap="middle" wrap="wrap">
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginRegister />} />
-        <Route path="/home" element={<Home />} />
+        {/* <Route path="/" element={<LoginRegister />} /> */}
+        <Route path="/" element={<Home />} />
         <Route path="/my-planner" element={<Layout style={layoutStyle}>
           <Sider width="15%" style={siderStyle}>
             <SiderLayout />
