@@ -5,7 +5,7 @@ import MyPlanner from './pages/my-planner/MyPlanner';
 import MyArchive from './pages/my-archive/MyArchive';
 import Documents from './pages/documents/Documents';
 import Calendar from './pages/calendar/Calendar';
-import SiderLayout from './layouts/SiderBar.js';
+import SiderLayout from './layouts/SiderLayout.js';
 import HeaderLayout from './layouts/Header';
 import Home from './pages/home/home.js';
 import { Layout, Flex } from 'antd';
