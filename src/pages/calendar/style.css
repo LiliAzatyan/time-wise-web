@@ -80,7 +80,7 @@
 .line {
     display: block;
     width: 100%;
-    border-bottom: 1px solid black; /* You can adjust the color and style as needed */
+    border-bottom: 1px solid black;
 }
 
 .beautiful-task {
