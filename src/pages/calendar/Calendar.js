@@ -8,50 +8,45 @@ import './style.css';
 const localizer = momentLocalizer(moment);
 
 const TimePlanner = () => {
-    const [tasks,] = useState([]);
-    const [modalOpen, setModalOpen] = useState(false);
-    const [selectedDate, setSelectedDate] = useState(null);
+    const [tasks, setTasks] = useState([]);
+    const [selectedDate, setSelectedDate] = useState(moment());
 
-
-    const handleDateClick = (date) => {
-        setSelectedDate(date);
-        setModalOpen(true);
+    const handleDateChange = date => {
+        setSelectedDate(moment(date));
+        const tasksForDate = tasks.filter(task => moment(task.start).isSame(date, 'day'));
+        setTasksForDate(tasksForDate);
     };
 
-    const closeModal = () => {
-        setModalOpen(false);
+    const setTasksForDate = tasksForDate => {
+        setTasks(tasksForDate);
     };
-    const handleEventClick = (event) => {
-        setSelectedDate(event.start);
-        setModalOpen(true);
-    };
-
-    const today = new Date();
 
     return (
         <div className="time-planner-container">
-            {modalOpen && (
-                <div className="modal" onClick={closeModal}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                        <span className="close" onClick={closeModal}>&times;</span>
-                        <h3>{moment(selectedDate).format('MMMM Do, YYYY')}</h3>
-                        {selectedDate && tasks.filter(task =>
-                            moment(task.start).isSame(selectedDate, 'day')
-                        ).length === 0 ? (
-                            <p>No tasks scheduled for this day.</p>
-                        ) : (
-                            <ul>
-                                {tasks.filter(task =>
-                                    moment(task.start).isSame(selectedDate, 'day')
-                                ).map(task => (
-                                    <li key={task.id}>{task.title}</li>
-                                ))}
-                            </ul>
-                        )}
+            <div className="task-list">
+                <h2><span className="beautiful-task">Tasks</span><span className="line"></span></h2>
+                <div className="task-list-header">
+                    <div className="calendars">
+                        <div className="headers">
+                            <div className="dayx">{selectedDate.format("ddd")}</div>
+                            <div className="dates">{selectedDate.format("D")}</div>
+                            <div className="months">{selectedDate.format("MMMM")}</div>
+                        </div>
                     </div>
                 </div>
-            )}
-
+                <ul>
+                    {tasks.length > 0 ? (
+                        tasks.map(task => (
+                            <li key={task.id}>
+                                <span className="task-date">{moment(task.start).format("MMMM Do, YYYY")}</span>
+                                <span className="task-title">{task.title}</span>
+                            </li>
+                        ))
+                    ) : (
+                        <li className="free-day">Enjoy your free day!</li>
+                    )}
+                </ul>
+            </div>
             <div className="calendar-container" style={{ height: '700px' }}>
                 <Calendar
                     localizer={localizer}
@@ -60,10 +55,10 @@ const TimePlanner = () => {
                     endAccessor="end"
                     style={{ height: '100%' }}
                     selectable={true}
-                    onSelectSlot={(slotInfo) => handleDateClick(slotInfo.start)}
-                    onSelectEvent={handleEventClick}
+                    onSelectSlot={(slotInfo) => handleDateChange(slotInfo.start)}
+                    onSelectEvent={(event) => console.log('Selected event:', event)}
                     dayPropGetter={(date) => {
-                        if (moment(date).isSame(today, 'day')) {
+                        if (moment(date).isSame(selectedDate, 'day')) {
                             return {
                                 className: 'custom-day today',
                             };
@@ -73,6 +68,7 @@ const TimePlanner = () => {
                         };
                     }}
                 />
+                {moment().isSame(selectedDate, 'day') && <div className="today-indicator"></div>}
             </div>
         </div>
     );
