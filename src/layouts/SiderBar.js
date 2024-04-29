@@ -57,9 +57,14 @@ const App = () => {
   return (
     <div style={{backgroundColor: "#FCFCFC"}}>
       <div style={{height: '63px', marginTop: '0px', backgroundColor: "#7BD6D4"}}>
+<<<<<<< HEAD:src/layouts/SiderBar.js
 
        <a href="/home" onClick={handleClick}>
               <button style={{backgroundColor: "#FCFCFC"}}
+=======
+       <a href="/calendar" onClick={handleClick}>
+              <button 
+>>>>>>> 877ce3d0f37c01e3e8a27c056d5af9a02b98db4c:src/layouts/SiderLayout.js
                 className={`button ${isClicked ? "true" : "false"}`}
                 onClick={handleClick}
               >
