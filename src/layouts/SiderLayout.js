@@ -51,9 +51,8 @@ const App = () => {
   return (
     <div style={{backgroundColor: "#FCFCFC"}}>
       <div style={{height: '63px', marginTop: '0px', backgroundColor: "#7BD6D4"}}>
-        
-       <a href="/home" onClick={handleClick}>
-              <button style={{backgroundColor: "#FCFCFC"}}
+       <a href="/calendar" onClick={handleClick}>
+              <button 
                 className={`button ${isClicked ? "true" : "false"}`}
                 onClick={handleClick}
               >

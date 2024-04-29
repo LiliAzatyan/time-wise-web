@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Chart from 'chart.js/auto';
-import './style.css';
 import img from './goals-pictures/motivation-pictures.png';
+import './style.css';
 
 const GoalTracking = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -203,7 +203,7 @@ const GoalTracking = () => {
             <span className="close" onClick={togglePopup}>&times;</span>
             <div className="popup-content">
               <form onSubmit={handleFormSubmit} className='form-box'>
-                <input
+                <input style={{maxWidth: "99%", minWidth: "99%"}}
                   type="text"
                   name="title"
                   value={goalData.title}
@@ -211,7 +211,7 @@ const GoalTracking = () => {
                   placeholder='Goal Title'
                   required
                 />
-                <textarea
+                <textarea style={{maxWidth: "99%", minWidth: "99%"}}
                   name="description"
                   value={goalData.description}
                   onChange={handleInputChange}
@@ -277,7 +277,7 @@ const GoalTracking = () => {
                     onChange={handleInputChange}
                     required
                   />
-                  <label>Completion Date:</label>
+                  <label>Completion Date:</label> 
                   <input
                     type="date"
                     name="completionDate"
@@ -315,7 +315,6 @@ const GoalTracking = () => {
     </ul>
   </div>
 </div>
-
 
       <div className="section-3">
         <div className="charts-container">
