@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AppstoreOutlined, RestOutlined, AreaChartOutlined, FileDoneOutlined, AimOutlined } from '@ant-design/icons';
+import {
+  AppstoreOutlined,
+  RestOutlined,
+  AreaChartOutlined,
+  FileDoneOutlined,
+  AimOutlined,
+} from "@ant-design/icons";
 
 const items = [
   {
@@ -15,7 +21,7 @@ const items = [
     icon: <AppstoreOutlined />,
     link: '/calendar',
   },
-  
+
   {
     label: 'Documents',
     key: 'documents',
@@ -51,7 +57,7 @@ const App = () => {
   return (
     <div style={{backgroundColor: "#FCFCFC"}}>
       <div style={{height: '63px', marginTop: '0px', backgroundColor: "#7BD6D4"}}>
-        
+
        <a href="/home" onClick={handleClick}>
               <button style={{backgroundColor: "#FCFCFC"}}
                 className={`button ${isClicked ? "true" : "false"}`}
@@ -60,13 +66,13 @@ const App = () => {
                 <img src="./TimeWise2.png" alt="Logo" width="100%"/>
               </button>
       </a>
-      
+
       </div>
       <div style={{height: '100vh', marginTop: "40px"}}>
         {items.map(item => (
           <div key={item.key} style={{ marginBottom: '10px' }}>
             <Link to={item.link} style={{ textDecoration: 'none' }}>
-              <button 
+              <button
                 onClick={() => onClick(item.key)}
                 style={{ padding: '10px 20px', fontSize: '16px', backgroundColor: current === item.key ? '#7BD6D4' : '#fff', color: current === item.key ? '#fff' : '#000', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
               >
@@ -82,5 +88,3 @@ const App = () => {
 };
 
 export default App;
-
-
