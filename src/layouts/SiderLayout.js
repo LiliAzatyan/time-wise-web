@@ -59,7 +59,7 @@ const App = () => {
       <div style={{height: '63px', marginTop: '0px', backgroundColor: "#7BD6D4"}}>
 
        <a href="/home" onClick={handleClick}>
-              <button style={{backgroundColor: "#FCFCFC"}}
+              <button
                 className={`button ${isClicked ? "true" : "false"}`}
                 onClick={handleClick}
               >
