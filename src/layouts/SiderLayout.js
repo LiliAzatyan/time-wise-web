@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import {
   AppstoreOutlined,
   RestOutlined,
@@ -44,37 +44,42 @@ const items = [
 
 const App = () => {
   const [current, setCurrent] = useState('my-planner');
+  const location = useLocation();
 
-  const onClick = (key) => {
-    console.log('click ', key);
-    setCurrent(key);
-  };
+  useEffect(() => {
+    const path = location.pathname;
+    const key = items.find(item => item.link === path)?.key;
+
+    if (key) {
+      setCurrent(key);
+    }
+  }, [location]);
+
   const [isClicked, setIsClicked] = useState(false);
   const handleClick = () => {
     setIsClicked(true);
     setTimeout(() => setIsClicked(false), 1000);
   };
+
   return (
     <div style={{backgroundColor: "#FCFCFC"}}>
       <div style={{height: '63px', marginTop: '0px', backgroundColor: "#7BD6D4"}}>
-
-       <a href="/home" onClick={handleClick}>
-              <button style={{backgroundColor: "#FCFCFC"}}
-                className={`button ${isClicked ? "true" : "false"}`}
-                onClick={handleClick}
-              >
-                <img src="./TimeWise2.png" alt="Logo" width="100%"/>
-              </button>
-      </a>
-
+        <a href="/home" onClick={handleClick}>
+          <button style={{backgroundColor: "#FCFCFC"}}
+            className={`button ${isClicked ? "true" : "false"}`}
+            onClick={handleClick}
+          >
+            <img src="./TimeWise2.png" alt="Logo" width="100%"/>
+          </button>
+        </a>
       </div>
       <div style={{height: '100vh', marginTop: "40px"}}>
         {items.map(item => (
           <div key={item.key} style={{ marginBottom: '10px' }}>
             <Link to={item.link} style={{ textDecoration: 'none' }}>
               <button
-                onClick={() => onClick(item.key)}
-                style={{ padding: '10px 20px', fontSize: '16px', backgroundColor: current === item.key ? '#7BD6D4' : '#fff', color: current === item.key ? '#fff' : '#000', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
+                onClick={() => setCurrent(item.key)}
+                style={{ marginTop: "15px", width: "100%", padding: '10px 20px', fontSize: '21px', color: current === item.key ? '#7BD6D4' : '#000', backgroundColor: "#fff",border: "none", borderRight: current === item.key ? 'solid 5px #7BD6D4' : "solid 0px #fff", cursor: 'pointer' }}
               >
                 {item.icon}
                 <span style={{ marginLeft: '8px' }}>{item.label}</span>
