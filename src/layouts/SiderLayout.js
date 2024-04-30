@@ -65,25 +65,14 @@ const App = () => {
     <div style={{backgroundColor: "#FCFCFC"}}>
       <div style={{height: '63px', marginTop: '0px', backgroundColor: "#7BD6D4"}}>
          
-        <a href="/home" onClick={handleClick}>
-          <button 
+        {/* <a href="/home" onClick={handleClick}> */}
+          {/* <button 
             className={`button ${isClicked ? "true" : "false"}`}
             onClick={handleClick}
-          >
-            <img src="./TimeWise2.png" alt="Logo" width="100%"/>
-          </button>
-        </a>
-
-
-       {/* <a href="/home" onClick={handleClick}>
-              <button
-                className={`button ${isClicked ? "true" : "false"}`}
-                onClick={handleClick}
-              >
-                <img src="./TimeWise2.png" alt="Logo" width="100%"/>
-              </button>
-      </a> */}
-
+          > */}
+            <img src="./TimeWise2.png" alt="Logo" width="70%" style={{marginTop: "13px", marginLeft: "8px"}}/>
+          {/* </button> */}
+        {/* </a> */}
       
       </div>
       <div style={{height: '100vh', marginTop: "40px"}}>
