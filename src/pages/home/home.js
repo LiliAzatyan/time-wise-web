@@ -1,20 +1,9 @@
-import React, { useState } from "react";
+import React  from "react";
 import { Link } from "react-scroll";
-import { Modal } from "antd";
 import "./home.css";
-import Login from "../login-and-register/login/index";
-import Registration from "../login-and-register/register/index";
+
 function Home() {
-    const [showLoginModal, setShowLoginModal] = useState(false);
-    const [showRegistrationModal, setShowRegistrationModal] = useState(false);
 
-    const handleLoginModal = () => {
-        setShowLoginModal(!showLoginModal);
-    };
-
-    const handleRegistrationModal = () => {
-        setShowRegistrationModal(!showRegistrationModal);
-    };
 
     return (
         <div>
@@ -24,36 +13,53 @@ function Home() {
             <Link activeClass="active" to="section4" spy={true} smooth={true} offset={-70} duration={500}></Link>
             <Link activeClass="active" to="section5" spy={true} smooth={true} offset={-70} duration={200}></Link>
 
-            <div id="section1" className="section section1"
-                 style={{backgroundColor: "#7BD6D4", color: "white", textAlign: "center", position: "relative"}}>
-                <div className="text-container"
-                     style={{position: "absolute", top: "20%", left: "50%", transform: "translate(-50%, -50%)"}}>
-                    <h1 style={{color: "#7BD6D4", fontSize: "100px", fontFamily: 'Lucida Grande'}}>TimeWise</h1>
-                    <p style={{fontSize: "25px"}}>Your Future Depends On What You Do Today</p>
-                    <div className="login_reg">
-                        <button className="button sign-up" style={{margin: '10px'}}
-                                onClick={handleRegistrationModal}>Sign Up
-                        </button>
-                        <button className="button sign-in" style={{margin: '10px'}} onClick={handleLoginModal}>Sign In
-                        </button>
+            <div id="section1">
+                <div className="header">
+                    <div className="logo">
+                        <img src="Home_Logo.png" alt="Logo"/>
                     </div>
-                    <div className="platform">
-                        <div className="app-store">
-                            <img src="app-store-icon.png" alt="App Store"/>
+                    <div className="buttons">
+                        <a href="/signin">
+                            <button className="sign-in">Sign In</button>
+                        </a>
+                        <a href="/signup">
+                            <button className="sign-up">Sign Up</button>
+                        </a>
+                    </div>
+                </div>
+
+                <div className="content">
+                    <div className="text" style={{marginLeft: '90px'}}>
+                        <div className="logo-container">
+                            <h1 style={{fontSize: "48px"}}>Welcome to</h1>
+                            <img src="text.png" alt="TimeWise Logo" style={{maxWidth: "100%"}}/>
                         </div>
-                        <div className="google-market">
-                            <img src="google-market-icon.png" alt="Google Market"/>
+                        <p style={{ fontSize: "24px", color: "black",marginTop: "10px" }}>Where organization meets
+                            inspiration.</p>
+                        <p style={{fontSize: "16px", color: "grey" ,marginTop: "20px"}}>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.
+                            Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco.
+                        </p>
+                        <div className={"social_but"}>
+                            <button className="try_free"
+                                    style={{width: "150px", height: "50px", fontSize: "18px", padding: "10px 20px"}}>Try
+                                Free
+                            </button>
+                            <button className="get_app"
+                                    style={{width: "150px", height: "50px", fontSize: "18px", padding: "10px 20px"}}>Get
+                                App
+                            </button>
                         </div>
+                    </div>
+                    <div className="background-image">
+                        <img src="Hedaer__bg.png" alt="Background"/>
                     </div>
                 </div>
             </div>
 
-
-            <Modal title="Login" visible={showLoginModal} onCancel={handleLoginModal} footer={null}><Login/></Modal>
-
-
-            <Modal title="Registration" visible={showRegistrationModal} onCancel={handleRegistrationModal}
-                   footer={null}><Registration/></Modal>
 
             <div id="section2" className="section" style={{backgroundColor: "rgba(123, 214, 212, 0.15)"}}>
                 <div className="text">
