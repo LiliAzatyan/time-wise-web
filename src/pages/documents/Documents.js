@@ -1,135 +1,59 @@
-// import React, { useState, useEffect } from "react";
-// import { Button, Modal } from "antd";
-// import DocumentCard from '../../components/DocumentsCard'
-// import "./styleDocuments.css";
+// import React, { useState } from "react";
+// import LeftComponent from "./leftComponent";
+// import RightComponent from "./rightComponent";
 
 // function Documents() {
-//   const [tasks, setTasks] = useState([]);
-//   const [newTask, setNewTask] = useState({
-//     title: "",
-//     description: "",
-//     dueDate: "",
-//     completed: false,
-//   });
+//   const [documents, setDocuments] = useState([]);
 
-//   const [isModalOpen, setIsModalOpen] = useState(false); // Define isModalOpen state
-//   const showModal = () => {
-//     setIsModalOpen(true);
-//   };
-//   const handleCancel = () => {
-//     setIsModalOpen(false);
-//   };
-
-//   const handleOk = () => {
-//     setTasks((prevTasks) => [
-//       ...prevTasks,
-//       { ...newTask, id: prevTasks.length + 1 },
-//     ]);
-//     setNewTask({
-//       title: "",
-//       description: "",
-//       dueDate: "",
-//       completed: false,
-//     });
-//     setIsModalOpen(false);
-//   };
-
-//   useEffect(() => {
-//     const savedTasks = localStorage.getItem('tasks');
-//     if (savedTasks) {
-//       setTasks(JSON.parse(savedTasks));
-//     }
-//   }, []);
-
-//   useEffect(() => {
-//     localStorage.setItem('tasks', JSON.stringify(tasks));
-//   }, [tasks]);
-
-//   const handleTaskChange = (taskId) => {
-//     setTasks((prevTasks) =>
-//       prevTasks.map((task) =>
-//         task.id === taskId ? { ...task, completed: !task.completed } : task
+//   const handleTaskChange = (documentId) => {
+//     setDocuments((prevDocuments) =>
+//       prevDocuments.map((doc) =>
+//         doc.id === documentId ? { ...doc, completed: !doc.completed } : doc
 //       )
 //     );
 //   };
 
-//   const handleDelete = (taskId) => {
-//     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+//   const handleSave = (newDocument) => {
+//     setDocuments((prevDocuments) => [...prevDocuments, newDocument]);
+//   };
+
+//   const handleDelete = (documentId) => {
+//     setDocuments((prevDocuments) =>
+//       prevDocuments.filter((doc) => doc.id !== documentId)
+//     );
 //   };
 
 //   return (
-//     <div className="daily-tasks-container">
-//       <div className="open-modal">
-//         <Button type="primary" onClick={showModal} className="open-modal-button">
-//           + Add New Plan
-//         </Button>
-//       </div>
-//       <Modal
-//         title="Add New Plan"
-//         open={isModalOpen}
-//         onOk={handleOk}
-//         onCancel={handleCancel}
-//       >
-//         <div className="add-task-title">
-//           <p>Title</p>
-//           <input
-//             type="text"
-//             className="input title-input"
-//             placeholder="Enter title"
-//             value={newTask.title}
-//             onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
-//           />
-//         </div>
-//         <div className="add-task-description">
-//           <p>Description</p>
-//           <input
-//             type="text"
-//             className="input description-input"
-//             placeholder="Enter description"
-//             value={newTask.description}
-//             onChange={(e) =>
-//               setNewTask({ ...newTask, description: e.target.value })
-//             }
-//           />
-//         </div>
-//         <div className="add-task-date">
-//           <p>Date</p>
-//           <input
-//             type="date"
-//             className="input date-input"
-//             value={newTask.dueDate}
-//             onChange={(e) =>
-//               setNewTask({ ...newTask, dueDate: e.target.value })
-//             }
-//           />
-//         </div>
-//       </Modal>
-//       <div className="tasks-row">
-//         {tasks.map((task) => (
-//           <DocumentCard
-//             key={task.id}
-//             title={task.title}
-//             body={task.description}
-//             dueDate={task.dueDate}
-//             completed={task.completed}
-//             handleTaskChange={() => handleTaskChange(task.id)}
-//             handleDelete={() => handleDelete(task.id)}
-//           />
-//         ))}
-//       </div>
+//     <div style={{ display: "flex" }}>
+//       <LeftComponent
+//         documents={documents}
+//         handleTaskChange={handleTaskChange}
+//         handleDelete={handleDelete} // Pass handleDelete to LeftComponent
+//       />
+
+//       <RightComponent onSave={handleSave} />
 //     </div>
 //   );
 // }
 
 // export default Documents;
-import React, { useState } from "react";
+
+
+import React, { useState, useEffect } from "react";
 import LeftComponent from "./leftComponent";
 import RightComponent from "./rightComponent";
 
 function Documents() {
   const [documents, setDocuments] = useState([]);
 
-  // Function to handle toggling the completed status of a document
+  useEffect(() => {
+    // Load documents from local storage when component mounts
+    const storedDocuments = JSON.parse(localStorage.getItem("documents"));
+    if (storedDocuments) {
+      setDocuments(storedDocuments);
+    }
+  }, []);
+
   const handleTaskChange = (documentId) => {
     setDocuments((prevDocuments) =>
       prevDocuments.map((doc) =>
@@ -138,15 +62,27 @@ function Documents() {
     );
   };
 
-  // Function to handle saving a new document
   const handleSave = (newDocument) => {
-    setDocuments([...documents, newDocument]);
+    const updatedDocuments = [...documents, newDocument];
+    setDocuments(updatedDocuments);
+    // Save updated documents to local storage
+    localStorage.setItem("documents", JSON.stringify(updatedDocuments));
+  };
+
+  const handleDelete = (documentId) => {
+    const updatedDocuments = documents.filter((doc) => doc.id !== documentId);
+    setDocuments(updatedDocuments);
+    // Save updated documents to local storage
+    localStorage.setItem("documents", JSON.stringify(updatedDocuments));
   };
 
   return (
     <div style={{ display: "flex" }}>
-      <LeftComponent documents={documents} handleTaskChange={handleTaskChange} />
-
+      <LeftComponent
+        documents={documents}
+        handleTaskChange={handleTaskChange}
+        handleDelete={handleDelete}
+      />
       <RightComponent onSave={handleSave} />
     </div>
   );

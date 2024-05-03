@@ -156,10 +156,12 @@
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
+  width: 20%;
 }
 
 .goal-details {
   flex: 1;
+  width: 20%;
 }
 
 .goal-details strong {
@@ -220,3 +222,5 @@
   max-width: 100%;
   height: auto;
 }
+
+
