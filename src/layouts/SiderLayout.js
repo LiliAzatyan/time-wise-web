@@ -23,7 +23,7 @@ const items = [
   },
 
   {
-    label: 'Documents',
+    label: 'My Notes',
     key: 'documents',
     icon: <FileDoneOutlined />,
     link: '/documents',
@@ -62,7 +62,7 @@ const App = () => {
   };
 
   return (
-    <div style={{backgroundColor: "#FCFCFC"}}>
+    <div style={{backgroundColor: "#FFFFFF" }}>
       <div style={{height: '63px', marginTop: '0px', backgroundColor: "#7BD6D4"}}>
          
         {/* <a href="/home" onClick={handleClick}> */}

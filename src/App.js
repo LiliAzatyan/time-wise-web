@@ -62,7 +62,7 @@ const App = () => (
               </Layout>
             </Layout>} />
             <Route path="/calendar" element={<Layout style={layoutStyle}>
-              <Sider width="25%" style={siderStyle}>
+              <Sider width="15%" style={siderStyle}>
                 <SiderLayout />
               </Sider>
               <Layout>
@@ -75,7 +75,7 @@ const App = () => (
               </Layout>
             </Layout>} />
             <Route path="/documents" element={<Layout style={layoutStyle}>
-              <Sider width="25%" style={siderStyle}>
+              <Sider width="15%" style={siderStyle}>
                 <SiderLayout />
               </Sider>
               <Layout>
@@ -88,7 +88,7 @@ const App = () => (
               </Layout>
             </Layout>} />
             <Route path="/goal-tracking" element={<Layout style={layoutStyle}>
-              <Sider width="25%" style={siderStyle}>
+              <Sider width="15%" style={siderStyle}>
                 <SiderLayout />
               </Sider>
               <Layout>
@@ -101,7 +101,7 @@ const App = () => (
               </Layout>
             </Layout>} />
             <Route path="/my-archive" element={<Layout style={layoutStyle}>
-              <Sider width="25%" style={siderStyle}>
+              <Sider width="15%" style={siderStyle}>
                 <SiderLayout />
               </Sider>
               <Layout>
