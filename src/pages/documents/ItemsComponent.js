@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Modal } from "antd";
 
-function LeftComponent({ documents = [], handleTaskChange, handleDelete }) {
+function ItemsComponent({ documents = [], handleTaskChange, handleDelete }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedDocument, setSelectedDocument] = useState(null);
-  const [updatedDocuments, setUpdatedDocuments] = useState(documents); // Define setUpdatedDocuments
+  const [updatedDocuments, setUpdatedDocuments] = useState(documents);
 
   useEffect(() => {
     setUpdatedDocuments(documents);
   }, [documents]);
 
-  const containerStyle = { // Define containerStyle
+  const containerStyle = {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", // Adjust the width as needed
+    gap: "10px",
     scrollbarWidth: "none",
     marginRight: "20px",
-    height: "90vh",
+    // height: "calc(90vh - 20px)", // Adjusted height to account for padding
     overflowY: "scroll",
     paddingRight: "10px",
-    width: "300px",
+    paddingBottom: "10px", // Padding at the bottom
   };
 
   const handleClick = (document) => {
@@ -41,7 +44,6 @@ function LeftComponent({ documents = [], handleTaskChange, handleDelete }) {
           <div
             style={{
               position: "relative",
-              width: "300px",
               height: "200px",
               borderBottom: "1px solid #ddd",
               borderRadius: "10px",
@@ -95,4 +97,4 @@ function LeftComponent({ documents = [], handleTaskChange, handleDelete }) {
   );
 }
 
-export default LeftComponent;
+export default ItemsComponent;

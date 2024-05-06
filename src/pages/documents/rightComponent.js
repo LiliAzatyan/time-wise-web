@@ -88,14 +88,15 @@
 
 // export default RightComponent;
 
-
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import Select from "react-select";
 
 function RightComponent({ onSave }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [dueDate, setDueDate] = useState("");
+  const [reminder, setReminder] = useState(""); // State for reminder selection
   const [isHovered, setIsHovered] = useState(false);
 
   const handleSave = () => {
@@ -104,13 +105,16 @@ function RightComponent({ onSave }) {
       title,
       description,
       dueDate,
+      reminder, // Include reminder in the document object
     };
 
     onSave(newDocument);
 
+    // Reset input fields
     setTitle("");
     setDescription("");
     setDueDate("");
+    setReminder("");
   };
 
   return (
@@ -126,6 +130,8 @@ function RightComponent({ onSave }) {
         boxShadow: "0px 0px 10px 0px rgba(0, 0, 0, 0.1)",
         position: "relative",
         overflow: "hidden",
+        height: "400px",
+        width: "40%",
       }}
     >
       <motion.h2
@@ -159,13 +165,13 @@ function RightComponent({ onSave }) {
         whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 0.99 }}
       />
-      <motion.input
-        type="date"
-        value={dueDate}
-        onChange={(e) => setDueDate(e.target.value)}
-        style={inputStyle}
-        whileHover={{ scale: 1.01 }}
-        whileTap={{ scale: 0.99 }}
+
+      <Select
+        options={reminderOptions}
+        placeholder="Select Genre of Your Note"
+        value={reminderOptions.find(option => option.value === reminder)}
+        onChange={(selectedOption) => setReminder(selectedOption.value)}
+        styles={selectStyles}
       />
       <motion.button
         onClick={handleSave}
@@ -175,7 +181,7 @@ function RightComponent({ onSave }) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {isHovered ? "Save Document" : "Save"}
+        {isHovered ? "Save Note" : "Save"}
       </motion.button>
     </motion.div>
   );
@@ -201,6 +207,21 @@ const buttonStyle = {
   color: "#fff",
   cursor: "pointer",
   transition: "background-color 0.3s",
+};
+
+const reminderOptions = [
+  { value: 'personal', label: 'Personal' },
+  { value: 'work', label: 'Work' },
+  { value: 'education', label: 'Education' },
+];
+
+// Custom styles for react-select
+const selectStyles = {
+  control: (styles) => ({
+    ...styles,
+    width: "100%",
+    marginBottom: "15px",
+  }),
 };
 
 export default RightComponent;
