@@ -20,8 +20,6 @@ const headerStyle = {
   paddingInline: 48,
   lineHeight: '64px',
   backgroundColor: '#7BD6D4',
-  borderBottom: 'solid 1px',
-  borderColor: '#999'
 };
 const contentStyle = {
   textAlign: 'center',
