@@ -23,10 +23,10 @@ const items = [
   },
 
   {
-    label: 'Documents',
-    key: 'documents',
+    label: 'Notes',
+    key: 'notes',
     icon: <FileDoneOutlined />,
-    link: '/documents',
+    link: '/notes',
   },
   {
     label: 'Goal Tracking',

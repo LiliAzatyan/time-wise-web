@@ -24,9 +24,9 @@ const items = [
 
   {
     label: 'My Notes',
-    key: 'documents',
+    key: 'notes',
     icon: <FileDoneOutlined />,
-    link: '/documents',
+    link: '/notes',
   },
   {
     label: 'Goal Tracking',
@@ -62,8 +62,8 @@ const App = () => {
   };
 
   return (
-    <div style={{backgroundColor: "#FFFFFF" }}>
-      <div style={{height: '64px', marginTop: '0px', backgroundColor: "#7BD6D4"}}>
+    <div style={{backgroundColor: "#FFFFFF", border: "1px #F7F7F7 solid" }}>
+      <div style={{height: '64px', marginTop: '-1px', marginRight: "-1px", backgroundColor: "#7BD6D4"}}>
          
         {/* <a href="/home" onClick={handleClick}> */}
           {/* <button 
