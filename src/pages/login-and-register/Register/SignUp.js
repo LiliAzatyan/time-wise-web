@@ -1,108 +1,204 @@
-import React from "react";
-import "./SignUp.css";
+import React, { useEffect, useState } from 'react';
+import './SignUp.css';
+import { AiOutlineMail, AiOutlineLock, AiOutlineEye, AiOutlineEyeInvisible, AiOutlineUser } from 'react-icons/ai';
+import { useNavigate, NavLink } from "react-router-dom";
+import axios from "axios";
+import basestyle from "../Base.module.css";
+const SignUp = () => {
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [showText, setShowText] = useState(false);
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const navigate = useNavigate();
 
-function SignUp() {
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
+    const [user, setUserDetails] = useState({
+        name: "",
+        email: "",
+        password: "",
+    });
+
+    const changeHandler = (e) => {
+        const { name, value } = e.target;
+        setUserDetails({
+            ...user,
+            [name]: value,
+        });
+    };
+
+    const validateForm = (values) => {
+        const error = {};
+        const regex = /^[^\s+@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\d).+$/; // Password regex for at least 1 uppercase letter and 1 number
+
+        if (!values.name) {
+            error.fname = "Name is required";
+        }
+        if (!values.email) {
+            error.email = "Email is required";
+        } else if (!regex.test(values.email)) {
+            error.email = "This is not a valid email format!";
+        }
+        if (!values.password) {
+            error.password = "Password is required";
+        } else if (values.password.length < 4) {
+            error.password = "Password must be more than 8 characters";
+        } else if (values.password.length > 30) {
+            error.password = "Password cannot exceed more than 30 characters";
+        } else if (!passwordRegex.test(values.password)) {
+            error.password = "Password must contain at least 1 uppercase letter and 1 number";
+        }
+        return error;
+    };
+    const signupHandler = (e) => {
+        e.preventDefault();
+        setFormErrors(validateForm(user));
+        setIsSubmit(true);
+        if (!formErrors) {
+          setIsSubmit(true);
+        }
+    };
+
+    useEffect(() => {
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+            console.log(user);
+            axios.post("http://localhost:7263/api/auth/register/", user).then((res) => {
+                alert(res.data.message);
+                navigate("/signin", { replace: true });
+            });
+        }
+    }, [formErrors]);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoaded(true);
+        }, 0);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        const container = document.querySelector('.container');
+        container.addEventListener('animationend', handleAnimationEnd);
+
+        return () => {
+            container.removeEventListener('animationend', handleAnimationEnd);
+        };
+    }, []);
+
+    const handleAnimationEnd = () => {
+        setShowText(true);
+    };
+
+
+
+    const togglePasswordVisibility = () => {
+        setIsPasswordVisible(!isPasswordVisible);
+    };
+
     return (
-        <div className="background">
-            <div id="section1" className="section section1">
-                <div className="header">
-                    <div className="logo">
-                        <a href="/" className="logo-link">
-                            <img src="Home_Logo.png" alt="Logo" />
-                        </a>
+        <div className="container">
+            <div className={`split left ${isLoaded ? 'animate-slide-up' : ''}`}>
+                <div className="row" style={{ padding: '20px', position: 'relative' }}>
+                    <div className="logo_header" style={{ position: 'absolute', top: '10px', left: '0px' }}>
+                        <img src="Home_Logo.png" alt="TimeWise Logo" style={{ maxWidth: '100%', height: 'auto' }} />
                     </div>
                 </div>
+                <div style={{}}>
+                    <h1 style={{
+                        fontSize: '48px',
+                        marginBottom: '10px',
+                        color: 'black',
+                        fontStyle: 'normal',
+                        fontWeight: 800
+                    }}>
+                        <span style={{ color: 'black' }}>Welcome to </span>
+                        <span style={{ color: '#2C889C' }}>Time</span>
+                        <span style={{ color: '#68B37A' }}>Wise </span>
+                    </h1>
 
-                <div className="content">
-                    <div className="text" style={{ marginLeft: "90px" }}>
-                        <div className="logo-container">
-                            <h1 style={{ fontSize: "48px" }}>Welcome to</h1>
-                            <img src="text.png" alt="TimeWise Logo" style={{ maxWidth: "100%" }} />
-                        </div>
-                        <p style={{ fontSize: "24px", color: "black", marginTop: "10px" }}>
-                            Just sign in and plan your day. It’s easy.
-                        </p>
-                        <p style={{ fontSize: "16px", color: "white", marginTop: "20px" }}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-                        </p>
-                        <div className={"social_but"}>
-                            <img src="Vector.png" alt="Vector Image" />
-                        </div>
+                    <p className={showText ? 'animate-text' : ''} style={{
+                        fontSize: '20px',
+                        lineHeight: '26px',
+                        fontFamily: 'Lato',
+                        fontStyle: 'normal',
+                        fontWeight: 600
+                    }}>Just sign in and plan your day. It’s easy.</p>
+                </div>
+                <div className="row" style={{ display: 'flex' }}>
+                    <div className={`image-container ${isLoaded ? 'animate-slide-up' : ''}`} style={{ flex: '1' }}>
+                        <img src="vector.png" alt="Your Image" />
                     </div>
-                    <div className="forms-wrapper">
-                        <form className="forms" method="post" action="/login">
-                            <div className={"inputGroup"}>
-                                <h1>Create account</h1>
-                                <input
-                                    type="text"
-                                    name="full_name"
-                                    placeholder="Full name"
-                                    style={{
-                                        width: "100%",
-                                        height: "56px",
-                                        border: "1px solid #7FC991",
-                                        borderRadius: "10px",
-                                        color: "#7FC991",
-                                        fontSize: "15px",
-                                    }}
-                                    required
-                                />
-                                <input
-                                    type="email"
-                                    name="email"
-                                    placeholder="Email"
-                                    style={{
-                                        width: "100%",
-                                        height: "56px",
-                                        border: "1px solid #7FC991",
-                                        borderRadius: "10px",
-                                        color: "#7FC991",
-                                        fontSize: "15px",
-                                    }}
-                                    required
-                                />
-                                <input
-                                    type="password"
-                                    name="password"
-                                    placeholder="Password"
-                                    style={{
-                                        width: "100%",
-                                        height: "56px",
-                                        border: "1px solid #7FC991",
-                                        borderRadius: "10px",
-                                        color: "#7FC991",
-                                        fontSize: "15px",
-                                    }}
-                                    required
-                                />
-                                <div style={{ display: "flex", alignItems: "center", marginTop: "10px" }}>
-                                    <input type="checkbox" id="rememberMe" name="rememberMe" style={{ marginRight: "10px" }} />
-                                    <label htmlFor="rememberMe" style={{ fontSize: "15px", color: "black" }}>Remember me</label>
+                </div>
+            </div>
+
+            <div className={`split right ${isLoaded ? 'animate-slide-right-to-left' : ''}`}>
+                <div className="centered">
+                    <div className="card" >
+                        <form >
+                            <div className="form-wrapper">
+                                <h3>Create account</h3>
+                                <p className={basestyle.error}>{formErrors.name}</p>
+                                <div className="text_area" style={{marginTop: '30px'}}>
+                                    <AiOutlineUser className="icon" size={30}/>
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        placeholder="Full Name"
+                                        className="text_input"
+                                        onChange={changeHandler}
+                                        value={user.name}
+                                    />
                                 </div>
-                                <button
+                                <p className={basestyle.error}>{formErrors.email}</p>
+
+                                <div className="text_area">
+                                    <AiOutlineMail className="icon" size={30}/>
+                                    <input
+                                        type="email"
+                                        id="emil"
+                                        name="email"
+                                        placeholder="Email"
+                                        className="text_input"
+                                        onChange={changeHandler}
+                                        value={user.email}
+                                    />
+                                </div>
+                                <p className={basestyle.error}>{formErrors.password}</p>
+                                <div className="text_area">
+                                    <AiOutlineLock className="icon" size={30}/>
+                                    <input
+                                        type={isPasswordVisible ? 'text' : 'password'}
+                                        id="password"
+                                        name="password"
+                                        placeholder="Password"
+                                        className="text_input"
+                                        onChange={changeHandler}
+                                        value={user.password}
+                                    />
+
+                                    <span className="eye-icon" onClick={togglePasswordVisibility}>
+                                        {isPasswordVisible ? <AiOutlineEyeInvisible/> : <AiOutlineEye/>}
+                                    </span>
+
+                                </div>
+                                <input
                                     type="submit"
-                                    style={{
-                                        width: "100%",
-                                        height: "56px",
-                                        background: "black",
-                                        borderRadius: "10px",
-                                        color: "white",
-                                        fontSize: "18px",
-                                    }}
-                                >
-                                    Create account
-                                </button>
-                                <a href="/signin" className="sign-up-link">
-                                    Already have an account? Sign in
-                                </a>
+                                    value="SIGN UP"
+                                    className="btn"
+                                    onClick={signupHandler}
+                                />
+                                <NavLink to="/signin" className="signup-link" style={{marginTop: '30px'}}>Already have
+                                    an account? Sign in</NavLink>
                             </div>
                         </form>
                     </div>
+
+
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default SignUp;
