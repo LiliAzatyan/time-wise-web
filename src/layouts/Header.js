@@ -50,7 +50,7 @@ const App = () => {
         <div style={{ position: 'relative', height: '100%' }}>
           <div style={{ textAlign: 'center', marginTop: '16px', marginLeft: "50px" }}>
             <Avatar size={64} icon={<UserOutlined />} />
-            <div style={{ marginTop: '8px', fontSize: '16px', fontWeight: 'bold' }}>Your Account</div>
+            <div style={{ marginTop: '8px', fontSize: '16px', fontWeight: 'bold' }}>Welcome Timewiser</div>
           </div>
           <Divider style={{ margin: '16px 0' }} />
           <div>
