@@ -51,8 +51,7 @@ const SignIn = () => {
 
     useEffect(() => {
         if (Object.keys(formErrors).length === 0 && isSubmit) {
-            // axios.post(`https://65.108.88.61:7263/api/auth/login`, user).then((res) => {
-            axios.post("http://localhost:3000/api/auth/login", user).then((res) => {
+            axios.post(`https://api.timewise.am/api/auth/login`, user).then((res) => {
                 // setUserState(res.data.user);
                 navigate("/my-planner", { replace: true });
             }).catch(err => console.log("Sign in Error" + err));
