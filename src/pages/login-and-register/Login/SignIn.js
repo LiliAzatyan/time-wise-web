@@ -51,11 +51,11 @@ const SignIn = () => {
 
     useEffect(() => {
         if (Object.keys(formErrors).length === 0 && isSubmit) {
-            console.log(user);
-            axios.post("http://localhost:7263/api/auth/login", user).then((res) => {
+            axios.post(`http://65.108.88.61:7263/api/auth/login`, user).then((res) => {
+            // axios.post("http://localhost:5000/api/auth/login", user).then((res) => {
                 // setUserState(res.data.user);
                 navigate("/my-planner", { replace: true });
-            });
+            }).catch(err => console.log("Sign in Error" + err));
         }
     }, [formErrors]);
     useEffect(() => {

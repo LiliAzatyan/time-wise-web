@@ -1,7 +1,12 @@
+.notes-app {
+  max-width: 800px;
+  margin: 0px auto;
+  padding: 20px;
+}
+
 .category-container {
   display: flex;
   justify-content: center;
-  gap: 10px;
   margin-top: 20px;
 }
 
@@ -12,7 +17,14 @@
   border-radius: 5px;
   color: #2c889c;
   cursor: pointer;
-  transition: all 0.3s ease;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  margin-right: 50px;
+}
+
+.category-btn:hover {
+  background-color: #87d3e4;
+  font-size: 15px !important;
 }
 
 .category-btn.active {
@@ -20,28 +32,20 @@
   color: white;
 }
 
-.category-select {
-  margin-bottom: 10px;
-}
-
-.add-note-form select {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 100%;
-}
-
-.add-note-form label {
-  margin-right: 10px;
-}
-
 .add-note-form input[type="text"],
-.add-note-form textarea {
-  width: calc(100% - 22px);
+.add-note-form textarea,
+.add-note-form select {
+  width: 100%;
+  height: 10%;
   padding: 10px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 5px;
+}
+
+.add-note-form {
+  height: 300px;
+  margin-left: -400px;
 }
 
 .add-note-btn {
@@ -51,15 +55,19 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.5s ease;
 }
 
 .add-note-btn:hover {
   background-color: #2c6c7f;
+  font-size: 15px;
 }
 
 .notes-container {
   margin-top: 20px;
+  margin-left: 400px;
+  width: 100%;
+  padding: 10px;
 }
 
 .note {
@@ -70,18 +78,41 @@
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 768px) {
-  .category-container {
-    flex-wrap: wrap;
-  }
+.category-select {
+  width: 120px;
+  height: 500px;
+  margin-left: 10px;
+  transition: all 0.5s ease;
+}
 
-  .category-btn {
-    flex: 1 0 45%;
-    margin: 5px;
-  }
+.category-select:hover {
+  font-size: 15px !important;
+}
 
-  .add-note-form input[type="text"],
-  .add-note-form textarea {
-    width: calc(100% - 20px);
-  }
+.select-note-type {
+  margin-top: 5px;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.select-note-type:hover {
+  background-color: #dfdab4;
+}
+
+.add-note-btn {
+  height: 50px;
+  width: 120px;
+  margin-top: 20px;
+  margin-left: 100px;
+  transition: all 0.5s ease;
+}
+
+.add-note-btn:hover {
+  background-color: #dfdab4;
+  font-size: 15px;
+  width: 150px;
+}
+
+.category-add-note {
+  display: flex;
 }

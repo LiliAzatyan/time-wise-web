@@ -60,12 +60,13 @@ const SignUp = () => {
     };
 
     useEffect(() => {
+        console.log(Object.keys(formErrors).length);
         if (Object.keys(formErrors).length === 0 && isSubmit) {
             console.log(user);
-            axios.post("http://localhost:7263/api/auth/register/", user).then((res) => {
+            axios.post(`http://65.108.88.61:7263/api/auth/register`, user).then((res) => {
                 alert(res.data.message);
                 navigate("/signin", { replace: true });
-            });
+            }).catch(err => console.log(err))
         }
     }, [formErrors]);
     useEffect(() => {
