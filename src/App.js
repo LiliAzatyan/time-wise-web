@@ -9,8 +9,11 @@ import HeaderLayout from "./layouts/Header";
 import Home from "./pages/home/home.js";
 import SignIn from "./pages/login-and-register/Login/SignIn";
 import SignUp from "./pages/login-and-register/Register/SignUp";
-import { Layout, Flex } from "antd";
-import React from "react";
+import  PageNotFound from "./pages/notfound/404-page"
+import { Layout, Flex } from 'antd';
+import React from 'react';
+
+
 
 const { Header, Sider, Content } = Layout;
 const headerStyle = {
@@ -43,6 +46,7 @@ const App = () => (
     <Flex gap="middle" wrap="wrap">
       <BrowserRouter>
         <Routes>
+          <Route path="/*" element={<PageNotFound />} />
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
