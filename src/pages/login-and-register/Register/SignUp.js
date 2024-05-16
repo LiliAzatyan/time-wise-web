@@ -127,7 +127,7 @@ const SignUp = () => {
                 </div>
                 <div className="row" style={{ display: 'flex' }}>
                     <div className={`image-container ${isLoaded ? 'animate-slide-up' : ''}`} style={{ flex: '1' }}>
-                        <img src="vector.png" alt="Your Image" />
+                        <img src="Vector.png" alt="Your Image" />
                     </div>
                 </div>
             </div>
@@ -203,3 +203,4 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
