@@ -1,9 +1,9 @@
-
 .section {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
+    max-width: 100%;
 }
 
 .section1 {
@@ -26,6 +26,12 @@
 .logo img {
     max-width: 300px;
 }
+
+.background-image-header {
+    width: 770px;
+    height: 648px;
+}
+
 .buttons{
     margin-right: 50px;
 }
@@ -79,6 +85,7 @@
 
 
 .content {
+    padding: 0px 00px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -111,14 +118,19 @@
 }
 .common-heading {
     color: #7FC991;
-    font-size: 24px;
+    font-size: 34px;
     font-weight: bold;
     margin-bottom: 10px;
+    transition:  0.5s ease;
+}
+.common-heading:hover {
+    color: #5fa16f;
+    font-size: 36px;
 }
 
 .common-text {
     margin-top: 10px;
-    font-size: 16px;
+    font-size: 26px;
     line-height: 1.6;
     color: #333;
 }
