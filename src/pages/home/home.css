@@ -118,19 +118,20 @@
 }
 .common-heading {
     color: #7FC991;
-    font-size: 34px;
+    font-size: 44px;
     font-weight: bold;
     margin-bottom: 10px;
     transition:  0.5s ease;
 }
 .common-heading:hover {
     color: #5fa16f;
-    font-size: 36px;
+    font-size: 46px;
 }
 
 .common-text {
     margin-top: 10px;
     font-size: 26px;
+    font-style:initial;
     line-height: 1.6;
     color: #333;
 }
