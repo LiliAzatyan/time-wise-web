@@ -28,7 +28,7 @@
 }
 
 .background-image-header {
-    width: 770px;
+    width: 670px;
     height: 648px;
 }
 
@@ -153,6 +153,10 @@
     margin-right: 10px;
 }
 
+.goal-animation {
+    width: 700px;
+    height: 600px;
+}
 
 .animated-marker {
     display: inline-block;
