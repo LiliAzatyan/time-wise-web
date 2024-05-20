@@ -49,7 +49,7 @@
 }
 
 .add-btn {
-  width: 85px;
+  width: 200px;
   height: 25px;
   border-radius: 10rem;
   margin-right: 200px;
@@ -80,10 +80,10 @@
 } */
 
 .close {
-  color: #aaa;
+  color: #5fb8cc;
   font-size: 24px;
   position: absolute;
-  top: 10px;
+  top: 1px;
   right: 10px;
   cursor: pointer;
 }
@@ -124,11 +124,11 @@
 .submit-btn {
   background-color: #ED9F29;
   color: white;
-  border: none;
   border-radius: 5px;
   padding: 10px;
   cursor: pointer;
   font-size: 16px;
+  width: 200px;
 }
 
 .submit-btn:hover {
@@ -162,7 +162,7 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  width: 200px;
+  width: 300px;
 }
 
 .goal-details {
@@ -195,8 +195,9 @@
 
 .section-3 {
   display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+  height: 50%;
+  margin: 50px 200px;
+  margin-left: 100px;
 }
 
 .charts-container {
@@ -227,4 +228,8 @@
 .side-content img {
   max-width: 100%;
   height: auto;
+}
+
+.priority-box {
+  display: flex;
 }
