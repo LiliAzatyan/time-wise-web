@@ -14,7 +14,6 @@ import registrAnimation from "../../../animations/registration-animation.json";
 import Lottie from "lottie-react";
 import { Link } from 'react-router-dom';
 
-
 const SignUp = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [showText, setShowText] = useState(false);
@@ -40,7 +39,7 @@ const SignUp = () => {
   const validateForm = (values) => {
     const error = {};
     const regex = /^[^\s+@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    const passwordRegex = /^(?=.*[A-Z])(?=.*\d).+$/; // Password regex for at least 1 uppercase letter and 1 number
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d).+$/;
 
     if (!values.name) {
       error.fname = "Name is required";
@@ -51,8 +50,8 @@ const SignUp = () => {
       error.email = "This is not a valid email format!";
     }
     if (!values.password) {
-      error.password = "Password is required";
-    } else if (values.password.length < 4) {
+        error.password = "Password is required";
+    } else if (values.password.length < 6) {
       error.password = "Password must be more than 8 characters";
     } else if (values.password.length > 30) {
       error.password = "Password cannot exceed more than 30 characters";
@@ -62,28 +61,27 @@ const SignUp = () => {
     }
     return error;
   };
-  const signupHandler = (e) => {
+
+  const signupHandler = async (e) => {
     e.preventDefault();
-    setFormErrors(validateForm(user));
+    const errors = validateForm(user);
+    setFormErrors(errors);
     setIsSubmit(true);
-    if (!formErrors) {
-      setIsSubmit(true);
+    if (Object.keys(errors).length === 0) {
+      try {
+        const response = await axios.post(`https://api.timewise.am/api/auth/register`, user);
+        alert(response.data.message);
+        navigate("/signin", { replace: true });
+      } catch (err) {
+        if (err.response && err.response.data) {
+          setFormErrors({ ...formErrors, apiError: err.response.data.message });
+        } else {
+          console.log(err);
+        }
+      }
     }
   };
 
-  useEffect(() => {
-    console.log(Object.keys(formErrors).length);
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(user);
-      axios
-        .post(`https://api.timewise.am/api/auth/register`, user)
-        .then((res) => {
-          alert(res.data.message);
-          navigate("/signin", { replace: true });
-        })
-        .catch((err) => console.log(err));
-    }
-  }, [formErrors]);
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoaded(true);
@@ -117,7 +115,6 @@ const SignUp = () => {
             className="logo_header"
             style={{ position: "absolute", top: "10px", left: "0px" }}
           >
-            {/* <img src="Home_Logo.png" alt="TimeWise Logo" style={{ maxWidth: '100%', height: 'auto' }} /> */}
             <Link to="/">
               <img
                 src="text.png"
@@ -162,16 +159,15 @@ const SignUp = () => {
       </div>
 
       <div
-        className={`split right ${
-          isLoaded ? "animate-slide-right-to-left" : ""
-        }`}
+        className={`split right ${isLoaded ? "animate-slide-right-to-left" : ""}`}
       >
         <div className="centered">
           <div className="card">
-            <form>
+            <form onSubmit={signupHandler}>
               <div className="form-wrapper">
                 <h3>Create account</h3>
-                <p className={basestyle.error}>{formErrors.name}</p>
+                {formErrors.apiError && <p className={basestyle.error}>{formErrors.apiError}</p>}
+                <p className={basestyle.error}>{formErrors.fname}</p>
                 <div className="text_area" style={{ marginTop: "30px" }}>
                   <AiOutlineUser className="icon" size={30} />
                   <input
@@ -185,12 +181,11 @@ const SignUp = () => {
                   />
                 </div>
                 <p className={basestyle.error}>{formErrors.email}</p>
-
                 <div className="text_area">
                   <AiOutlineMail className="icon" size={30} />
                   <input
                     type="email"
-                    id="emil"
+                    id="email"
                     name="email"
                     placeholder="Email"
                     className="text_input"
@@ -210,7 +205,6 @@ const SignUp = () => {
                     onChange={changeHandler}
                     value={user.password}
                   />
-
                   <span className="eye-icon" onClick={togglePasswordVisibility}>
                     {isPasswordVisible ? (
                       <AiOutlineEyeInvisible />
@@ -223,7 +217,6 @@ const SignUp = () => {
                   type="submit"
                   value="SIGN UP"
                   className="btn"
-                  onClick={signupHandler}
                 />
                 <NavLink
                   to="/signin"

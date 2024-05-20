@@ -55,17 +55,39 @@ const SignIn = () => {
     // }
   };
 
-  useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      axios
-        .post(`https://api.timewise.am/api/auth/login`, user)
-        .then((res) => {
-          // setUserState(res.data.user);
-          navigate("/my-planner", { replace: true });
-        })
-        .catch((err) => console.log("Sign in Error" + err));
+  const signinHandler = async (e) => {
+    e.preventDefault();
+    const errors = validateForm(user);
+    setFormErrors(errors);
+    setIsSubmit(true);
+    if (Object.keys(errors).length === 0) {
+      try {
+        const response = await axios.post(`https://api.timewise.am/api/auth/login`, user);
+        alert(response.data.message);
+        navigate("/my-planner", { replace: true });
+      } catch (err) {
+        if (err.response && err.response.data) {
+          setFormErrors({ ...formErrors, apiError: err.response.data.message });
+        } else {
+          console.log(err);
+        }
+      }
     }
-  }, [formErrors]);
+  };
+
+//   useEffect(() => {
+//     if (Object.keys(formErrors).length === 0 && isSubmit) {
+//       axios
+//         // .post(`https://api.timewise.am/api/auth/login`, user)
+//         .post(`http://localhost:3001/api/auth/login`, user)
+//         .then((res) => {
+//           // setUserState(res.data.user);
+//           navigate("/my-planner", { replace: true });
+//         })
+//         .catch((err) => console.log("Sign in Error" + err));
+//         console.log(user);
+//     }
+//   }, [formErrors]);
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoaded(true);
@@ -158,7 +180,7 @@ const SignIn = () => {
             className="card"
             style={{ display: isSigningUp ? "none" : "block" }}
           >
-            <form>
+            <form onSubmit={signinHandler}>
               <div className="form-wrapper">
                 <h3>Sign in</h3>
                 <p className={basestyle.error}>{formErrors.email}</p>
