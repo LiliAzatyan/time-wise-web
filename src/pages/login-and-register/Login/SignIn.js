@@ -62,7 +62,7 @@ const SignIn = () => {
     if (Object.keys(errors).length === 0) {
       try {
         const response = await axios.post(
-          `http://localhost:3001/api/auth/login`,
+          `https://api.timewise.am/api/auth/login`,
           user
         );
         alert(response.data.message);
