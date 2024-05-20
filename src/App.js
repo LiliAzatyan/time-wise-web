@@ -13,8 +13,6 @@ import  PageNotFound from "./pages/notfound/404-page"
 import { Layout, Flex } from 'antd';
 import React from 'react';
 
-
-
 const { Header, Sider, Content } = Layout;
 const headerStyle = {
   textAlign: "center",

@@ -9,8 +9,7 @@ import {
 import { useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
 import basestyle from "../Base.module.css";
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -62,7 +61,10 @@ const SignIn = () => {
     setIsSubmit(true);
     if (Object.keys(errors).length === 0) {
       try {
-        const response = await axios.post(`https://api.timewise.am/api/auth/login`, user);
+        const response = await axios.post(
+          `http://localhost:3001/api/auth/login`,
+          user
+        );
         alert(response.data.message);
         navigate("/my-planner", { replace: true });
       } catch (err) {
@@ -75,19 +77,19 @@ const SignIn = () => {
     }
   };
 
-//   useEffect(() => {
-//     if (Object.keys(formErrors).length === 0 && isSubmit) {
-//       axios
-//         // .post(`https://api.timewise.am/api/auth/login`, user)
-//         .post(`http://localhost:3001/api/auth/login`, user)
-//         .then((res) => {
-//           // setUserState(res.data.user);
-//           navigate("/my-planner", { replace: true });
-//         })
-//         .catch((err) => console.log("Sign in Error" + err));
-//         console.log(user);
-//     }
-//   }, [formErrors]);
+  //   useEffect(() => {
+  //     if (Object.keys(formErrors).length === 0 && isSubmit) {
+  //       axios
+  //         // .post(`https://api.timewise.am/api/auth/login`, user)
+  //         .post(`http://localhost:3001/api/auth/login`, user)
+  //         .then((res) => {
+  //           // setUserState(res.data.user);
+  //           navigate("/my-planner", { replace: true });
+  //         })
+  //         .catch((err) => console.log("Sign in Error" + err));
+  //         console.log(user);
+  //     }
+  //   }, [formErrors]);
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoaded(true);
@@ -156,8 +158,7 @@ const SignIn = () => {
               fontWeight: 600,
             }}
           >
-            Streamline Your Day with Efficient Time Management 
-            
+            Streamline Your Day with Efficient Time Management
           </p>
         </div>
         <div className="row" style={{ display: "flex" }}>
@@ -219,13 +220,14 @@ const SignIn = () => {
                   </span>
                 </div>
                 <p className="forgot-password">Forgot Password?</p>
-                <input
+                <button
                   style={{ marginTop: "28px" }}
                   type="submit"
-                  value="Sign in"
                   className="btn"
-                  onClick={loginHandler}
-                />
+                  //   onClick={loginHandler}
+                >
+                    Sign in
+                </button>
                 <NavLink
                   to="/signup"
                   className="signup-link"
