@@ -163,7 +163,7 @@ const SignUp = () => {
       >
         <div className="centered">
           <div className="card">
-            <form onSubmit={signupHandler}>
+            <form onSubmit={signupHandler}  style={{  "box-shadow": "0px 0px 30.1px 0px #AFEEEE, 0px 0px 6.3px 0px #AFEEEE"}}>
               <div className="form-wrapper">
                 <h3>Create account</h3>
                 {formErrors.apiError && <p className={basestyle.error}>{formErrors.apiError}</p>}

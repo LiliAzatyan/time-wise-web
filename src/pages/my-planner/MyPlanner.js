@@ -41,7 +41,7 @@ function MyPlanner() {
   };
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: "flex" }}>
       <div className="daily-tasks-container" style={styles.container}>
         <div style={styles.leftPanel}>
           <AddTaskForm onSave={handleSave} onCancel={handleCancel} />
@@ -54,8 +54,11 @@ function MyPlanner() {
           />
         </div>
       </div>
-      <div className="animationDiv"  style={animationStyles}>
-        <TypingAnimation text={"Every step you take brings you closer to your dreams. Keep moving forward."} />
+      <div className="animationDiv" style={animationStyles}>
+        <TypingAnimation
+          className="typing-animation"
+          text={"Every step you take brings you closer to your dreams. Keep moving forward."}
+        />
       </div>
     </div>
   );
@@ -79,7 +82,7 @@ const styles = {
   },
 };
 const animationStyles = {
-    color: '#7BD6D4'
-  };
+  color: "#7BD6D4",
+};
 
 export default MyPlanner;

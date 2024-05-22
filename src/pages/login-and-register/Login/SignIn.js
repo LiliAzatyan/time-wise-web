@@ -181,7 +181,8 @@ const SignIn = () => {
             className="card"
             style={{ display: isSigningUp ? "none" : "block" }}
           >
-            <form onSubmit={signinHandler}>
+
+            <form onSubmit={signinHandler} style={{  "box-shadow": "0px 0px 30.1px 0px #AFEEEE, 0px 0px 6.3px 0px #AFEEEE"}}>
               <div className="form-wrapper">
                 <h3>Sign in</h3>
                 <p className={basestyle.error}>{formErrors.email}</p>

@@ -116,3 +116,34 @@
 .category-add-note {
   display: flex;
 }
+
+.motivational-words {
+  /* border: 3px solid #2c6c7f; */
+  font-size: 40px;
+  box-shadow: 8px 2px 10.1px 1px #bae1ed, 0px 0px 6.3px 0.5px #f2e296;
+  height: 500px;
+  width: 400px;
+  color: #87c6d8;
+}
+
+.edit-delete-box {
+  display: flex;
+  flex-direction: column;
+  margin-left: 650px;
+  gap: 10px;
+  margin-top: -38px;
+  padding: 3px;
+}
+
+.edit-delete-btns {
+  background-color: #5c8997;
+  color: rgb(253, 237, 237);
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.edit-delete-btns:hover {
+  background-color: #5d95a6;
+  transform: scaleY(1.2);
+}
