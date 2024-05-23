@@ -32,12 +32,17 @@ const App = () => {
     console.log("Install app");
   };
 
-  const handleSwitchAccount = () => {
-    console.log("Switch account");
+  const handleSwitchAccount = (event) => {
+    if (window.confirm("Are you sure you want to switch account?")) {
+      console.log("User confirmed switch");
+    } else {
+      event.preventDefault();
+      console.log("User cancelled switch");
+    }
   };
+  
 
   const handleLogout = (event) => {
-    
     if (window.confirm("Are you sure you want to log out?")) {
       console.log("User confirmed logout");
     } else {
