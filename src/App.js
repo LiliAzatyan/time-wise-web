@@ -30,7 +30,7 @@ function App() {
               element={<SignUp />}
           />
           <Route
-              path="/planner"
+              path="/my-planner"
               element={
                 <Sidebar>
                   <Navbar />
