@@ -34,12 +34,12 @@ const items = [
     icon: <AimOutlined />,
     link: '/goal-tracking',
   },
-  {
-    label: 'My Archive',
-    key: 'my-archive',
-    icon: <RestOutlined />,
-    link: '/my-archive',
-  },
+  // {
+  //   label: 'My Archive',
+  //   key: 'my-archive',
+  //   icon: <RestOutlined />,
+  //   link: '/my-archive',
+  // },
 ];
 
 const App = () => {

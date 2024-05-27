@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar/SideBar";
 import Navbar from "./components/Navbar/Navbar";
 import MyPlanner from "./pages/my-planner/MyPlanner";
-import MyArchive from "./pages/my-archive/MyArchive";
+// import MyArchive from "./pages/my-archive/MyArchive";
 import Notes from "./pages/notes/Notes";
 import Calendar from "./pages/calendar/Calendar";
 import Home from "./pages/home/home.js";
@@ -65,7 +65,7 @@ function App() {
                 </Sidebar>
               }
           />
-          <Route
+          {/* <Route
               path="/archive"
               element={
                 <Sidebar>
@@ -73,7 +73,7 @@ function App() {
                   <MyArchive />
                 </Sidebar>
               }
-          />
+          /> */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Router>

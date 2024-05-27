@@ -2,6 +2,7 @@
   max-width: 800px;
   margin: 0px auto;
   padding: 20px;
+  width: 100%;
 }
 
 .category-container {
@@ -30,6 +31,10 @@
 .category-btn.active {
   background-color: #2c889c;
   color: white;
+}
+
+.add-note-form {
+margin-left: -250px !important; 
 }
 
 .add-note-form input[type="text"],

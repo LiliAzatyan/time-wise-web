@@ -111,7 +111,6 @@ const Notes = () => {
             <p>You got this!</p>
           </div>
         )}
-
         <form className="add-note-form" onSubmit={handleSubmit}>
           <input
             type="text"
@@ -165,7 +164,6 @@ const Notes = () => {
             />
           </div>
         </form>
-
         <div className="notes-list">
           {filteredNotes.map((note, index) => (
             <div key={index} className="note">

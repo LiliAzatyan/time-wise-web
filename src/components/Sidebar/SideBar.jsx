@@ -33,11 +33,11 @@ const routes = [
     name: "Goals",
     icon: <AimOutlined />,
   },
-  {
-    path: "/archive",
-    name: "Archive",
-    icon: <RestOutlined />,
-  },
+  // {
+  //   path: "/archive",
+  //   name: "Archive",
+  //   icon: <RestOutlined />,
+  // },
 ];
 
 const SideBar = ({ children }) => {
