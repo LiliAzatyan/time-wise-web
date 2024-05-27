@@ -164,6 +164,7 @@ const Notes = () => {
             />
           </div>
         </form>
+        <div></div>
         <div className="notes-list">
           {filteredNotes.map((note, index) => (
             <div key={index} className="note">
@@ -186,6 +187,7 @@ const Notes = () => {
             </div>
           ))}
         </div>
+        
       </div>
     </div>
   );
