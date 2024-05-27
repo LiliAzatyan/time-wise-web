@@ -166,7 +166,7 @@ const SignIn = () => {
             className={`image-container ${isLoaded ? "animate-slide-up" : ""}`}
             style={{ flex: "1" }}
           >
-            <img src="Vector.png" alt="Login " />
+            <img src="/Vector.png" alt="Login " />
           </div>
         </div>
       </div>
