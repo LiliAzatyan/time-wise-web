@@ -154,7 +154,7 @@ const SignUp = () => {
           <Lottie animationData={registrAnimation} className="registr-image" />
         </div>
         <div className="row" style={{ display: "flex" }}>
-          <img src="Vector.png" alt="Your Image" />
+          <img src="Vector.png" alt="vImage" />
         </div>
       </div>
 

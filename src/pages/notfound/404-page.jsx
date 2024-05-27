@@ -86,7 +86,7 @@ const PageNotFound = () => {
         </Container>
         <img
           src="/error-img.png"
-          alt="image"
+          alt="errorimage"
           style={{
             width: "500px",
             marginLeft: "68%",
