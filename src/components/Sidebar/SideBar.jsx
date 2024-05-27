@@ -14,7 +14,7 @@ import SidebarMenu from "./SidebarMenu";
 
 const routes = [
   {
-    path: "/planner",
+    path: "/my-planner",
     name: "My Planner",
     icon: <AreaChartOutlined />,
   },
