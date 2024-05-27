@@ -24,6 +24,12 @@ export default function MyPlanner() {
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
+  const handleDeleteTask = (taskToDelete) => {
+    const updatedTasks = tasks.filter((task) => task !== taskToDelete);
+    setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+  };
+
   const handleNextPage = () => {
     if (currentPage < Math.ceil(tasks.length / tasksPerPage)) {
       setCurrentPage(currentPage + 1);
@@ -159,7 +165,7 @@ export default function MyPlanner() {
           </button>
           <div style={gridContainerStyles}>
             {currentTasks.map((task, index) => (
-                <TaskCard key={index} task={task} />
+                <TaskCard key={index} task={task} onDelete={handleDeleteTask} />
             ))}
           </div>
           <div style={paginationStyles}>

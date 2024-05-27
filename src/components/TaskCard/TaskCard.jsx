@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 
 export default function TaskCard({ task, onDelete, onEdit }) {
+    const [isCompleted, setIsCompleted] = useState(false);
+
+    const handleCheckboxChange = () => {
+        setIsCompleted(!isCompleted);
+    };
+
     return (
         <div style={taskCardStyles}>
             <div style={taskHeaderStyles}>
-                <input type="checkbox" />
-                <h3 style={taskTitleStyles}>{task.title}</h3>
+                <input type="checkbox" checked={isCompleted} onChange={handleCheckboxChange} />
+                <h3 style={{ ...taskTitleStyles, textDecoration: isCompleted ? 'line-through' : 'none' }}>
+                    {task.title}
+                </h3>
             </div>
             <p style={taskDescriptionStyles}>{task.description}</p>
             <p style={taskCategoryStyles}>{task.category}</p>
@@ -14,7 +22,8 @@ export default function TaskCard({ task, onDelete, onEdit }) {
                 {task.priority.charAt(0).toUpperCase() + task.priority.slice(1)}
             </div>
             <div style={taskFooterStyles}>
-                <FaEdit style={iconStyles} onClick={() => onEdit(task)} />
+                {/*<FaEdit style={iconStyles} onClick={() => onEdit(task)} />*/}
+                <FaEdit style={iconStyles} />
                 <FaTrashAlt style={iconStyles} onClick={() => onDelete(task)} />
             </div>
         </div>
