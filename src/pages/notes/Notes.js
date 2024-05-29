@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import "./notes.css";
-import Lottie from "lottie-react";
 import todoAnimation from "../../animations/todo-animation.json";
+import React, { useState, useEffect } from "react";
+import Lottie from "lottie-react";
+import "./notes.css";
 
 const Notes = () => {
   const [title, setTitle] = useState("");
@@ -77,7 +77,7 @@ const Notes = () => {
 
   return (
     <div className="notes-app">
-      <div className="category-container">
+      {/* <div className="category-container">
         <button
           className={`category-btn ${category === "all" ? "active" : ""}`}
           onClick={() => filterNotesByCategory("all")}
@@ -106,9 +106,8 @@ const Notes = () => {
 
       <div className="notes-container">
         {showMotivationalWords && (
-          <div className="motivational-words">
-            <p>Start jotting down your thoughts and ideas!</p>
-            <p>You got this!</p>
+          <div className="motivational-words-box">
+            <p className="motivation-words">Start jotting down your thoughts and ideas! You got this!</p>
           </div>
         )}
         <form className="add-note-form" onSubmit={handleSubmit}>
@@ -187,8 +186,7 @@ const Notes = () => {
             </div>
           ))}
         </div>
-        
-      </div>
+      </div> */}
     </div>
   );
 };

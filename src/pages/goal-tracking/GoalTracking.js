@@ -186,7 +186,7 @@ const GoalTracking = () => {
 
   return (
     <div className="container"> 
-      <div className='section-1'>
+      {/* <div className='section-1'>
         <div className='welcome-box'>
           <p className='name-section'>Hi, TimeWiser 👋</p>
           <p className='welcome-section'>Let's pursue dreams, conquer goals!</p>
@@ -325,14 +325,13 @@ const GoalTracking = () => {
             <h3>Motivational Words</h3>
             <p>Stay focused and keep moving forward!</p>
             <img src={img} alt="motivation-picture" style={{ maxWidth: "100%", minHeight: "300px" }} />
-            {/* <img src={img} alt="motivation-picture" style={{width: "400px", height: "400px"}}/> */}
           </div>
           <div className="chart">
             <h3>Goals Completion Status</h3>
             <canvas id="completionChart" width="200" height="150"></canvas>
           </div>
         </div> 
-      </div>
+      </div> */}
     </div>
   );
 };
