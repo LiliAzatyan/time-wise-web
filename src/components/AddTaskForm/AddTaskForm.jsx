@@ -23,7 +23,10 @@ export default function AddTaskForm({ onAddTask }) {
     const [invitedUsers, setInvitedUsers] = useState([]);
 
     const handleTitleChange = (e) => {
-        setTitle(e.target.value);
+        const inputValue = e.target.value;
+        if (inputValue.length <= 55) {
+            setTitle(inputValue);
+        }
     };
 
     const handleDescriptionChange = (e) => {
